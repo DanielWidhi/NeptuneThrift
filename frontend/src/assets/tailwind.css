@@ -1,1 +1,25 @@
 @import "tailwindcss";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* src/assets/tailwind.css */
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("./font/Satoshi-Variable.ttf") format("truetype");
+  /* Anda bisa menambahkan font-weight dan font-style jika perlu */
+}
+
+@font-face {
+  font-family: "Integral CF";
+  /* Ganti nama file ini dengan nama file font Integral yang ingin Anda gunakan sebagai default */
+  src: url("./font/Fontspring-DEMO-integralcf-regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Hey Comic";
+  /* Ganti nama file ini dengan nama file font Integral yang ingin Anda gunakan sebagai default */
+  src: url("./font/Hey Comic.ttf") format("opentype");
+}
