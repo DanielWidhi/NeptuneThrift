@@ -1,72 +1,42 @@
 <script setup>
-// Pastikan path ke logo Anda sudah benar
+// Pastikan path ke logo sudah benar (menggunakan alias @ ke src)
 import logofootwear from "@/asset/images/Footwear.png";
 </script>
 
 <template>
-  <!-- Ganti background menjadi abu-abu terang, bukan gelap -->
-  <footer class="bg-gray-100">
-    <div>
-      <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
-        <!-- Container untuk Logo dan Menu -->
-        <!-- sm:flex akan membuat layout menjadi baris di layar kecil ke atas -->
-        <!-- sm:justify-between akan mendorong logo ke kiri dan menu ke kanan -->
-        <div class="sm:flex sm:items-center">
-          <div class="pl-24 grid grid-flow-col grid-rows-3 gap-4">
-            <!-- Logo -->
-            <div class="flex items-start row-span-3">
-              <a href="#" class="flex mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
-                <img :src="logofootwear" class="h-10" alt="NeptuneThrift Logo" />
-                <span class="self-center text-2xl font-bold whitespace-nowrap">
-                  <span class="text-blue-700">NEPTUNE</span>THRIFT
-                </span>
-              </a>
-            </div>
-          </div>
+  <!-- Footer bergaya minimal seperti contoh -->
+  <footer class="bg-slate-100 text-gray-800">
+    <div class="mx-auto w-full max-w-screen-xl px-6 py-8 lg:py-10">
+      <div class="grid items-center text-center md:grid-cols-3 md:text-left">
+        <a href="#" class="flex items-center justify-center gap-3 pt-12 md:justify-start">
+          <img :src="logofootwear" class="h-10 w-auto" alt="NeptuneThrift Logo" />
+          <span class="text-2xl font-extrabold tracking-tight">
+            <span class="text-blue-700">NEPTUNE</span>THRIFT
+          </span>
+        </a>
 
-          <div class="col-span-2 pl-24">
-            <!-- Menu Navigasi (sebagai saudara/sibling dari logo, bukan di dalamnya) -->
-            <div class="row-span-2 sm:flex sm:items-center sm:justify-center">
-              <ul
-                class="flex flex-wrap items-center mb-6 text-sm font-semibold text-gray-800 sm:mb-0"
-              >
-                <li>
-                  <a href="#" class="hover:underline me-4 md:me-6">About</a>
-                </li>
-                <li>
-                  <a href="#" class="hover:underline me-4 md:me-6">Promo</a>
-                </li>
-                <li>
-                  <a href="#" class="hover:underline me-4 md:me-6">Product</a>
-                </li>
-                <li>
-                  <a href="#" class="hover:underline">Contact</a>
-                </li>
-              </ul>
-            </div>
+        <nav class="mt-8 md:justify-self-center">
+          <ul class="flex flex-wrap justify-center gap-x-8 gap-y-3 text-sm font-semibold">
+            <li><a href="#" class="hover:underline hover:text-blue-700">About</a></li>
+            <li><a href="#" class="hover:underline hover:text-blue-700">Promo</a></li>
+            <li><a href="#" class="hover:underline hover:text-blue-700">Product</a></li>
+            <li><a href="#" class="hover:underline hover:text-blue-700">Contact</a></li>
+          </ul>
+        </nav>
 
-            <!-- Tagline (elemen ini hilang di kodemu) -->
-            <div class="mt-6 text-center text-sm text-gray-700">
-              <p>Your sneaker story starts here — discover, style, and save with NeptuneThrift.</p>
-              <p>Your sneaker story starts here — discover.</p>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- Garis pemisah -->
-        <hr class="my-6 border-gray-400 sm:mx-auto lg:my-8" />
-    </div>
-
-
-      <!-- Copyright -->
-      <div class="sm:flex sm:justify-start">
-        <!-- Ganti teks copyright agar sesuai gambar -->
-        <span class="text-sm text-gray-500 sm:text-center">
-          © 2025 UrbanStep. All rights reserved.
-        </span>
+        <!-- <div class="hidden md:block"></div> -->
       </div>
-      
+
+      <div class="text-center text-sm text-gray-700">
+        <p>Your sneaker story starts here — discover, style, and save with NeptuneThrift.</p>
+        <p>Your sneaker story starts here — discover.</p>
+      </div>
+
+      <hr class="my-8 border-gray-300" />
+
+      <div class="text-center md:text-left">
+        <span class="text-sm text-gray-600">© 2025 UrbanStep. All rights reserved.</span>
+      </div>
     </div>
   </footer>
 </template>
