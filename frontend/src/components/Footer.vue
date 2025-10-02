@@ -15,10 +15,9 @@ import logofootwear from "@/asset/images/Footwear.png";
           </span>
         </a>
 
-        <nav class="mt-8 md:justify-self-center">
+        <nav class="ml-40 mt-8 md:justify-self-center">
           <ul class="flex flex-wrap justify-center gap-x-8 gap-y-3 text-sm font-semibold">
             <li><a href="#" class="hover:underline hover:text-blue-700">About</a></li>
-            <li><a href="#" class="hover:underline hover:text-blue-700">Promo</a></li>
             <li><a href="#" class="hover:underline hover:text-blue-700">Product</a></li>
             <li><a href="#" class="hover:underline hover:text-blue-700">Contact</a></li>
           </ul>
@@ -27,7 +26,7 @@ import logofootwear from "@/asset/images/Footwear.png";
         <!-- <div class="hidden md:block"></div> -->
       </div>
 
-      <div class="text-center text-sm text-gray-700">
+      <div class="pl-40 text-center text-sm text-gray-700">
         <p>Your sneaker story starts here — discover, style, and save with NeptuneThrift.</p>
         <p>Your sneaker story starts here — discover.</p>
       </div>
@@ -35,7 +34,7 @@ import logofootwear from "@/asset/images/Footwear.png";
       <hr class="my-8 border-gray-300" />
 
       <div class="text-center md:text-left">
-        <span class="text-sm text-gray-600">© 2025 UrbanStep. All rights reserved.</span>
+        <span class="text-sm text-gray-600">© 2025 NEPTUNETHRIFT. All rights reserved.</span>
       </div>
     </div>
   </footer>

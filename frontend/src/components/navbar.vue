@@ -8,7 +8,9 @@ import logofootwear from "@/asset/images/Footwear.png";
       <!-- Logo + Brand -->
       <div class="flex items-center space-x-2">
         <img :src="logofootwear" alt="Logo" class="h-8 w-8" />
-        <span class="font-bold text-xl"> <span class="text-blue-700">NEPTUNE</span>THRIFT </span>
+        <span class="font-extrabold text-xl">
+          <span class="text-blue-700">NEPTUNE</span>THRIFT
+        </span>
       </div>
 
       <!-- Menu Tengah -->
