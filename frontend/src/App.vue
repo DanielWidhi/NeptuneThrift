@@ -1,23 +1,10 @@
 <script setup>
-import Footer from "./components/Footer.vue";
-import Navbar from "./components/navbar.vue";
+import { RouterView } from 'vue-router'
 </script>
 
 <template>
-  <div class="app-container">
-    <Navbar />
-    <main class="main-content">
-      <h1 class="text-green-700 title">You did it!</h1>
-      <p>
-        Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-        documentation
-      </p>
-      <div>
-        <h1 class="title">Ini Judul dengan Font Montserrat</h1>
-        <p class="paragraph">Ini adalah paragraf biasa.</p>
-      </div>
-    </main>
-    <Footer />
+  <div>
+    <RouterView />
   </div>
 </template>
 
