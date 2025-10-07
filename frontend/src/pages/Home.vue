@@ -51,18 +51,26 @@ const promoSelling = ref([
 <template>
   <div class="w-full">
     <!-- HERO -->
-    <section class="relative bg-black text-white">
+    <section class="relative bg-black text-white" data-aos="fade-up">
       <img :src="GambarHome" alt="shoes" class="w-full h-[500px] object-cover opacity-70" />
       <div
         class="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-start px-10"
+        data-aos="zoom-in"
+        data-aos-delay="100"
       >
         <h1 class="text-4xl font-bold">FIND SHOES<br />THAT MATCHES<br />YOUR STYLE</h1>
         <p class="mt-4 max-w-md">
           Discover curated selections of thrift and limited edition shoes designed to bring out your
           unique style.
         </p>
-        <a href="#" class="mt-6 bg-blue-800 text-white px-6 py-3 rounded-lg shadow">Shop Now</a>
-        <div class="flex gap-8 mt-6 text-sm">
+        <a
+          href="#"
+          class="mt-6 bg-blue-800 text-white px-6 py-3 rounded-lg shadow"
+          data-aos="fade-right"
+          data-aos-delay="200"
+          >Shop Now</a
+        >
+        <div class="flex gap-8 mt-6 text-sm" data-aos="fade-left" data-aos-delay="300">
           <span><strong>200+</strong> International Brands</span>
           <span><strong>2,000+</strong> High Quality Products</span>
           <span><strong>30,000+</strong> Happy Customers</span>
@@ -71,13 +79,16 @@ const promoSelling = ref([
     </section>
 
     <!-- BRAND STRIP -->
-    <section class="bg-blue-900 py-8 flex justify-center gap-12 text-white font-semibold text-lg">
-      <span>NIKE</span>
-      <span>VERSACE</span>
-      <span>ZARA</span>
-      <span>GUCCI</span>
-      <span>PRADA</span>
-      <span>Calvin Klein</span>
+    <section
+      class="bg-blue-900 py-8 flex justify-center gap-12 text-white font-semibold text-lg"
+      data-aos="fade-up"
+    >
+      <span data-aos="flip-left">NIKE</span>
+      <span data-aos="flip-left" data-aos-delay="50">VERSACE</span>
+      <span data-aos="flip-left" data-aos-delay="100">ZARA</span>
+      <span data-aos="flip-left" data-aos-delay="150">GUCCI</span>
+      <span data-aos="flip-left" data-aos-delay="200">PRADA</span>
+      <span data-aos="flip-left" data-aos-delay="250">Calvin Klein</span>
     </section>
 
     <!-- NEW ARRIVALS -->
@@ -86,7 +97,13 @@ const promoSelling = ref([
         NEW <span class="text-blue-800">ARRIVALS</span>
       </h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-        <div v-for="item in newArrivals" :key="item.id" class="bg-white shadow rounded-lg p-4">
+        <div
+          v-for="item in newArrivals"
+          :key="item.id"
+          class="bg-white shadow rounded-lg p-4"
+          :data-aos="'fade-up'"
+          data-aos-once="true"
+        >
           <img :src="item.image" :alt="item.name" class="w-full h-48 object-cover rounded" />
           <h3 class="mt-4 font-semibold">{{ item.name }}</h3>
           <div class="flex items-center gap-2">
@@ -103,12 +120,18 @@ const promoSelling = ref([
     </section>
 
     <!-- PROMO SELLING -->
-    <section class="py-18 px-8 sm:px-16 lg:px-[140px] pb-24 md:pb-30 bg-gray-50">
+    <section class="py-18 px-8 sm:px-16 lg:px-[140px] pb-24 md:pb-30 bg-gray-50" data-aos="fade-up">
       <h2 class="text-center text-3xl font-extrabold mb-6">
         PROMO <span class="text-blue-800">SELLING</span>
       </h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-        <div v-for="item in promoSelling" :key="item.id" class="bg-white shadow rounded-lg p-4">
+        <div
+          v-for="(item, idx) in promoSelling"
+          :key="item.id"
+          class="bg-white shadow rounded-lg p-4"
+          :data-aos="'zoom-in'"
+          :data-aos-delay="idx * 100"
+        >
           <img :src="item.image" :alt="item.name" class="w-full h-48 object-cover rounded" />
           <h3 class="mt-4 font-semibold">{{ item.name }}</h3>
           <div class="flex items-center gap-2">
@@ -138,6 +161,7 @@ const promoSelling = ref([
             style="
               background-image: url('https://images.unsplash.com/photo-1593032465175-394435b7a177?q=80&w=1887&auto=format&fit=crop');
             "
+            data-aos="fade-right"
           >
             <div class="absolute inset-0 bg-black bg-opacity-10"></div>
             <h3
@@ -154,6 +178,8 @@ const promoSelling = ref([
             style="
               background-image: url('https://images.unsplash.com/photo-1610652492515-9989937584a2?q=80&w=1887&auto=format&fit=crop');
             "
+            data-aos="fade-left"
+            data-aos-delay="100"
           >
             <div class="absolute inset-0 bg-black bg-opacity-10"></div>
             <h3
@@ -170,6 +196,8 @@ const promoSelling = ref([
             style="
               background-image: url('https://images.unsplash.com/photo-1516256734614-8a3c48a70c12?q=80&w=1887&auto=format&fit=crop');
             "
+            data-aos="zoom-in"
+            data-aos-delay="200"
           >
             <div class="absolute inset-0 bg-black bg-opacity-10"></div>
             <h3
@@ -186,6 +214,8 @@ const promoSelling = ref([
             style="
               background-image: url('https://images.unsplash.com/photo-1581009137042-c552e485697a?q=80&w=2070&auto=format&fit=crop');
             "
+            data-aos="fade-up"
+            data-aos-delay="250"
           >
             <div class="absolute inset-0 bg-black bg-opacity-10"></div>
             <h3
@@ -200,25 +230,27 @@ const promoSelling = ref([
     </section>
 
     <!-- HAPPY CUSTOMERS -->
-    <section class="py-18 px-8 sm:px-16 lg:px-[140px] pb-24 md:pb-30 bg-gray-50">
+    <section class="py-18 px-8 sm:px-16 lg:px-[140px] pb-24 md:pb-30 bg-gray-50" data-aos="fade-up">
       <div class="flex justify-between">
         <h2 class="text-3xl font-extrabold mb-6">
           OUR HAPPY <span class="text-blue-800">CUSTOMERS</span>
         </h2>
         <div>
-          <a href="#" class="bg-blue-800 text-white px-4 py-3 rounded-lg shadow">More Review</a>
+          <a href="#" class="bg-blue-800 text-white px-4 py-3 rounded-lg shadow" data-aos="zoom-in"
+            >More Review</a
+          >
         </div>
       </div>
       <div class="grid md:grid-cols-3 gap-6">
-        <div class="bg-white shadow rounded-lg p-6">
-          <p>"I’m blown away by the quality and style of the shoes I received!"</p>
+        <div class="bg-white shadow rounded-lg p-6" data-aos="fade-right">
+          <p>"I'm blown away by the quality and style of the shoes I received!"</p>
           <span class="mt-2 block font-semibold">- Sarah M.</span>
         </div>
-        <div class="bg-white shadow rounded-lg p-6">
+        <div class="bg-white shadow rounded-lg p-6" data-aos="fade-up" data-aos-delay="100">
           <p>"The range of options is truly remarkable, catering to many styles."</p>
           <span class="mt-2 block font-semibold">- Alex K.</span>
         </div>
-        <div class="bg-white shadow rounded-lg p-6">
+        <div class="bg-white shadow rounded-lg p-6" data-aos="fade-left" data-aos-delay="200">
           <p>"The collection of shoes is not only diverse but always on point."</p>
           <span class="mt-2 block font-semibold">- James L.</span>
         </div>
@@ -240,7 +272,10 @@ const promoSelling = ref([
         </div>
 
         <!-- Rating Form -->
-        <div class="p-4 sm:p-6 rounded-3xl w-full flex-1 border border-gray-200">
+        <div
+          class="p-4 sm:p-6 rounded-3xl w-full flex-1 border border-gray-200"
+          data-aos="fade-left"
+        >
           <h4 class="font-semibold text-2xl sm:text-[32px]">Leave a Rating</h4>
           <p class="text-gray-600 text-sm sm:text-base mb-6">Feel free to send us your thoughts.</p>
           <form class="flex flex-col gap-4">

@@ -17,7 +17,7 @@ watch(useRoute(), () => {
   })
 })
 </script>
-<template>
+<template> 
   <div>
     <Navbar />
     <div class="relative min-h-screen overflow-x-hidden">
