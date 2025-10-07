@@ -2,7 +2,6 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 // layouts
 import AppLayout from '@/layouts/AppLayout.vue'
-import UserLayout from '@/pages/profile/index.vue'
 // Pages
 import Home from '@/pages/Home.vue'
 import ProductPage from '@/pages/Product.vue'
@@ -11,8 +10,9 @@ import AboutPage from '@/pages/About.vue'
 import DetailProductPage from '@/pages/DetailProduct.vue'
 // User Profile
 import Profile from '@/pages/profile/Profile.vue'
-
-
+import Cart from '@/pages/profile/Cart.vue'
+import Wishlist from '@/pages/profile/Wishlist.vue'
+import Review from '@/pages/profile/Review.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -48,9 +48,12 @@ const router = createRouter({
         },
         {
           path: '/user',
-          component: UserLayout,
+          // component: AppLayout,
           children: [
             {path: 'profile', name : 'Profile', component: Profile },
+            {path: 'cart', name : 'Cart', component: Cart },
+            {path: 'wishlist', name : 'Wishlist', component: Wishlist },
+            {path: 'review', name : 'Review', component: Review },
           ],
         },
       ],

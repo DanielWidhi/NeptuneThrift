@@ -1,6 +1,6 @@
 <script setup>
-import { ref, onMounted, onUnmounted, nextTick } from 'vue';
-import { RouterLink, useRoute } from 'vue-router';
+import { ref, onMounted, onUnmounted, nextTick } from "vue";
+import { RouterLink, useRoute } from "vue-router";
 
 // Impor gambar dari navbar asli Anda
 import defaultAvatar from "@/asset/images/user_profile/default-avatar.png";
@@ -19,20 +19,36 @@ const navHeight = ref(0);
 const route = useRoute();
 
 // ... (sisa fungsi JavaScript tidak berubah) ...
-const toggleUserDropdown = () => { isUserOpen.value = !isUserOpen.value; };
-const toggleSidebar = () => { isSidebarOpen.value = !isSidebarOpen.value; };
-const handleScroll = () => { if (navbarRef.value) { isSticky.value = window.scrollY > navbarRef.value.offsetTop; } };
-const closeOnClickOutside = (event) => { if (!event.target.closest('.user-dropdown')) { isUserOpen.value = false; } };
+const toggleUserDropdown = () => {
+  isUserOpen.value = !isUserOpen.value;
+};
+const toggleSidebar = () => {
+  isSidebarOpen.value = !isSidebarOpen.value;
+};
+const handleScroll = () => {
+  if (navbarRef.value) {
+    isSticky.value = window.scrollY > navbarRef.value.offsetTop;
+  }
+};
+const closeOnClickOutside = (event) => {
+  if (!event.target.closest(".user-dropdown")) {
+    isUserOpen.value = false;
+  }
+};
 
 onMounted(() => {
-  nextTick(() => { if (navbarRef.value) { navHeight.value = navbarRef.value.offsetHeight; } });
-  window.addEventListener('scroll', handleScroll);
-  window.addEventListener('click', closeOnClickOutside);
+  nextTick(() => {
+    if (navbarRef.value) {
+      navHeight.value = navbarRef.value.offsetHeight;
+    }
+  });
+  window.addEventListener("scroll", handleScroll);
+  window.addEventListener("click", closeOnClickOutside);
 });
 
 onUnmounted(() => {
-  window.removeEventListener('scroll', handleScroll);
-  window.removeEventListener('click', closeOnClickOutside);
+  window.removeEventListener("scroll", handleScroll);
+  window.removeEventListener("click", closeOnClickOutside);
 });
 </script>
 
@@ -46,7 +62,7 @@ onUnmounted(() => {
     class="w-full transition-all duration-300 z-50"
     :class="{
       'fixed top-0 left-0 right-0 bg-white shadow-lg': isSticky,
-      'relative bg-white shadow-md': !isSticky
+      'relative bg-white shadow-md': !isSticky,
     }"
   >
     <div class="container mx-auto flex justify-between items-center px-6 py-3">
@@ -70,7 +86,10 @@ onUnmounted(() => {
           </RouterLink>
           <span
             class="mt-1 h-0.5 bg-blue-500 rounded-full transition-all duration-400 ease-out"
-            :class="{ 'w-8': route.path === '/product', 'w-0 group-hover:w-8': route.path !== '/product' }"
+            :class="{
+              'w-8': route.path === '/product',
+              'w-0 group-hover:w-8': route.path !== '/product',
+            }"
           ></span>
         </li>
         <li class="group flex flex-col items-center">
@@ -83,7 +102,10 @@ onUnmounted(() => {
           </RouterLink>
           <span
             class="mt-1 h-0.5 bg-blue-500 rounded-full transition-all duration-400 ease-out"
-            :class="{ 'w-8': route.path === '/promo', 'w-0 group-hover:w-8': route.path !== '/promo' }"
+            :class="{
+              'w-8': route.path === '/promo',
+              'w-0 group-hover:w-8': route.path !== '/promo',
+            }"
           ></span>
         </li>
         <li class="group flex flex-col items-center">
@@ -96,7 +118,10 @@ onUnmounted(() => {
           </RouterLink>
           <span
             class="mt-1 h-0.5 bg-blue-500 rounded-full transition-all duration-400 ease-out"
-            :class="{ 'w-8': route.path === '/about', 'w-0 group-hover:w-8': route.path !== '/about' }"
+            :class="{
+              'w-8': route.path === '/about',
+              'w-0 group-hover:w-8': route.path !== '/about',
+            }"
           ></span>
         </li>
       </ul>
@@ -105,14 +130,18 @@ onUnmounted(() => {
       <div class="md:hidden">
         <button @click="toggleSidebar" aria-label="Toggle sidebar">
           <svg class="h-6 w-6 text-blue-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16m-7 6h7"
+            />
           </svg>
         </button>
       </div>
 
       <!-- ===== GRUP KANAN BARU: Keranjang + Akun (Desktop) ===== -->
       <div class="hidden md:flex items-center space-x-10">
-
         <!-- Ikon Keranjang Belanja (dengan efek garis bawah) -->
         <div class="group flex flex-col items-center">
           <RouterLink to="/cart" aria-label="View Shopping Cart">
@@ -124,7 +153,10 @@ onUnmounted(() => {
           </RouterLink>
           <span
             class="mt-1 h-0.5 bg-blue-500 rounded-full transition-all duration-400 ease-out"
-            :class="{ 'w-8': route.path === '/cart', 'w-0 group-hover:w-8': route.path !== '/cart' }"
+            :class="{
+              'w-8': route.path === '/cart',
+              'w-0 group-hover:w-8': route.path !== '/cart',
+            }"
           ></span>
         </div>
 
@@ -140,20 +172,42 @@ onUnmounted(() => {
               />
             </button>
             <!-- Dropdown Menu User -->
-            <div v-if="isUserOpen" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-xl z-20 py-1">
-              <RouterLink to="/profile" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50">
+            <div
+              v-if="isUserOpen"
+              class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-xl z-20 py-1"
+            >
+              <RouterLink
+                to="/user/profile"
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50"
+              >
                 My Profile
               </RouterLink>
-              <a href="#" @click.prevent="isAuthenticated = false" class="w-full text-left block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50">
+              <a
+                href="#"
+                @click.prevent="isAuthenticated = false"
+                class="w-full text-left block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50"
+              >
                 Sign Out
               </a>
             </div>
           </div>
           <!-- Jika pengguna belum login -->
           <div v-else>
-            <button @click="isAuthenticated = true" class="flex items-center gap-2 font-medium text-white bg-blue-700 hover:bg-blue-600 px-4 py-2 rounded-full transition-colors">
-              <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                <path fill-rule="evenodd" d="M7.5 3.75A1.5 1.5 0 006 5.25v13.5a1.5 1.5 0 001.5 1.5h6a1.5 1.5 0 001.5-1.5V15a.75.75 0 011.5 0v3.75a3 3 0 01-3 3h-6a3 3 0 01-3-3V5.25a3 3 0 013-3h6a3 3 0 013 3V9A.75.75 0 0115 9V5.25a1.5 1.5 0 00-1.5-1.5h-6zm10.72 4.72a.75.75 0 011.06 0l3 3a.75.75 0 010 1.06l-3 3a.75.75 0 11-1.06-1.06l1.72-1.72H9a.75.75 0 010-1.5h10.94l-1.72-1.72a.75.75 0 010-1.06z" clip-rule="evenodd" />
+            <button
+              @click="isAuthenticated = true"
+              class="flex items-center gap-2 font-medium text-white bg-blue-700 hover:bg-blue-600 px-4 py-2 rounded-full transition-colors"
+            >
+              <svg
+                class="h-5 w-5"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M7.5 3.75A1.5 1.5 0 006 5.25v13.5a1.5 1.5 0 001.5 1.5h6a1.5 1.5 0 001.5-1.5V15a.75.75 0 011.5 0v3.75a3 3 0 01-3 3h-6a3 3 0 01-3-3V5.25a3 3 0 013-3h6a3 3 0 013 3V9A.75.75 0 0115 9V5.25a1.5 1.5 0 00-1.5-1.5h-6zm10.72 4.72a.75.75 0 011.06 0l3 3a.75.75 0 010 1.06l-3 3a.75.75 0 11-1.06-1.06l1.72-1.72H9a.75.75 0 010-1.5h10.94l-1.72-1.72a.75.75 0 010-1.06z"
+                  clip-rule="evenodd"
+                />
               </svg>
               Sign In
             </button>
@@ -164,36 +218,99 @@ onUnmounted(() => {
   </nav>
 
   <!-- ... (sisa template tidak berubah) ... -->
-  <div v-if="isSidebarOpen" class="fixed inset-0 bg-black bg-opacity-50 z-50 md:hidden" @click="isSidebarOpen = false"></div>
-  <aside class="fixed top-0 left-0 w-64 h-full bg-white z-60 transform transition-transform duration-300 ease-in-out md:hidden" :class="isSidebarOpen ? 'translate-x-0' : '-translate-x-full'">
-      <div class="p-4">
-          <div class="flex justify-between items-center mb-8">
-              <span class="font-extrabold text-lg"><span class="text-blue-700">NEPTUNE</span>THRIFT</span>
-              <button @click="isSidebarOpen = false">
-                  <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
-              </button>
-          </div>
-          <nav class="flex flex-col space-y-4">
-              <RouterLink to="/product" @click="isSidebarOpen = false" class="font-medium text-blue-700 hover:text-blue-500 text-lg">Product</RouterLink>
-              <RouterLink to="/promo" @click="isSidebarOpen = false" class="font-medium text-blue-700 hover:text-blue-500 text-lg">Promo</RouterLink>
-              <RouterLink to="/about" @click="isSidebarOpen = false" class="font-medium text-blue-700 hover:text-blue-500 text-lg">About</RouterLink>
-              <RouterLink to="/cart" @click="isSidebarOpen = false" class="flex items-center gap-3 font-medium text-blue-700 hover:text-blue-500 text-lg">
-                  <img :src="cartIcon" alt="" class="h-6 w-6" />
-                  <span>Cart</span>
-              </RouterLink>
-              <hr class="my-4">
-              <div v-if="isAuthenticated" class="space-y-4">
-                  <RouterLink to="/profile" @click="isSidebarOpen = false" class="font-medium text-blue-700 hover:text-blue-500 text-lg">My Profile</RouterLink>
-                  <a href="#" @click.prevent="isAuthenticated = false; isSidebarOpen = false;" class="font-medium text-blue-700 hover:text-blue-500 text-lg">Sign Out</a>
-              </div>
-              <div v-else>
-                  <button @click="isAuthenticated = true; isSidebarOpen = false;" class="w-full flex items-center justify-center gap-2 font-medium text-white bg-blue-700 hover:bg-blue-600 px-4 py-2 rounded-full transition-colors">
-                      <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M7.5 3.75A1.5 1.5 0 006 5.25v13.5a1.5 1.5 0 001.5 1.5h6a1.5 1.5 0 001.5-1.5V15a.75.75 0 011.5 0v3.75a3 3 0 01-3 3h-6a3 3 0 01-3-3V5.25a3 3 0 013-3h6a3 3 0 013 3V9A.75.75 0 0115 9V5.25a1.5 1.5 0 00-1.5-1.5h-6zm10.72 4.72a.75.75 0 011.06 0l3 3a.75.75 0 010 1.06l-3 3a.75.75 0 11-1.06-1.06l1.72-1.72H9a.75.75 0 010-1.5h10.94l-1.72-1.72a.75.75 0 010-1.06z" clip-rule="evenodd" /></svg>
-                      Sign In
-                  </button>
-              </div>
-          </nav>
+  <div
+    v-if="isSidebarOpen"
+    class="fixed inset-0 bg-black bg-opacity-50 z-50 md:hidden"
+    @click="isSidebarOpen = false"
+  ></div>
+  <aside
+    class="fixed top-0 left-0 w-64 h-full bg-white z-60 transform transition-transform duration-300 ease-in-out md:hidden"
+    :class="isSidebarOpen ? 'translate-x-0' : '-translate-x-full'"
+  >
+    <div class="p-4">
+      <div class="flex justify-between items-center mb-8">
+        <span class="font-extrabold text-lg"><span class="text-blue-700">NEPTUNE</span>THRIFT</span>
+        <button @click="isSidebarOpen = false">
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
       </div>
+      <nav class="flex flex-col space-y-4">
+        <RouterLink
+          to="/product"
+          @click="isSidebarOpen = false"
+          class="font-medium text-blue-700 hover:text-blue-500 text-lg"
+          >Product</RouterLink
+        >
+        <RouterLink
+          to="/promo"
+          @click="isSidebarOpen = false"
+          class="font-medium text-blue-700 hover:text-blue-500 text-lg"
+          >Promo</RouterLink
+        >
+        <RouterLink
+          to="/about"
+          @click="isSidebarOpen = false"
+          class="font-medium text-blue-700 hover:text-blue-500 text-lg"
+          >About</RouterLink
+        >
+        <RouterLink
+          to="/cart"
+          @click="isSidebarOpen = false"
+          class="flex items-center gap-3 font-medium text-blue-700 hover:text-blue-500 text-lg"
+        >
+          <img :src="cartIcon" alt="" class="h-6 w-6" />
+          <span>Cart</span>
+        </RouterLink>
+        <hr class="my-4" />
+        <div v-if="isAuthenticated" class="space-y-4">
+          <RouterLink
+            to="/profile"
+            @click="isSidebarOpen = false"
+            class="font-medium text-blue-700 hover:text-blue-500 text-lg"
+            >My Profile</RouterLink
+          >
+          <a
+            href="#"
+            @click.prevent="
+              isAuthenticated = false;
+              isSidebarOpen = false;
+            "
+            class="font-medium text-blue-700 hover:text-blue-500 text-lg"
+            >Sign Out</a
+          >
+        </div>
+        <div v-else>
+          <button
+            @click="
+              isAuthenticated = true;
+              isSidebarOpen = false;
+            "
+            class="w-full flex items-center justify-center gap-2 font-medium text-white bg-blue-700 hover:bg-blue-600 px-4 py-2 rounded-full transition-colors"
+          >
+            <svg
+              class="h-5 w-5"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M7.5 3.75A1.5 1.5 0 006 5.25v13.5a1.5 1.5 0 001.5 1.5h6a1.5 1.5 0 001.5-1.5V15a.75.75 0 011.5 0v3.75a3 3 0 01-3 3h-6a3 3 0 01-3-3V5.25a3 3 0 013-3h6a3 3 0 013 3V9A.75.75 0 0115 9V5.25a1.5 1.5 0 00-1.5-1.5h-6zm10.72 4.72a.75.75 0 011.06 0l3 3a.75.75 0 010 1.06l-3 3a.75.75 0 11-1.06-1.06l1.72-1.72H9a.75.75 0 010-1.5h10.94l-1.72-1.72a.75.75 0 010-1.06z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            Sign In
+          </button>
+        </div>
+      </nav>
+    </div>
   </aside>
 </template>
 
