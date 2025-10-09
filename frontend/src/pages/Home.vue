@@ -94,7 +94,7 @@ const promoSelling = ref([
 
     <!-- NEW ARRIVALS -->
     <section class="py-18 px-8 sm:px-16 lg:px-[140px] pb-24 md:pb-30">
-      <h2 class="text-center text-3xl font-extrabold mb-6">
+      <h2 class="text-center text-3xl font-extrabold mb-6" data-aos="fade-up" data-aos-delay="100">
         NEW <span class="text-blue-800">ARRIVALS</span>
       </h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
@@ -244,17 +244,17 @@ const promoSelling = ref([
       </div>
       <div class="grid md:grid-cols-3 gap-6">
         <div class="bg-white shadow rounded-lg p-8" data-aos="fade-right">
-          <img :src="Rating" alt="rating" class="pb-2">
+          <img :src="Rating" alt="rating" class="pb-2" />
           <p>"I'm blown away by the quality and style of the shoes I received!"</p>
           <span class="mt-2 block font-semibold">- Sarah M.</span>
         </div>
         <div class="bg-white shadow rounded-lg p-8" data-aos="fade-up" data-aos-delay="100">
-          <img :src="Rating" alt="rating" class="pb-2">
+          <img :src="Rating" alt="rating" class="pb-2" />
           <p>"The range of options is truly remarkable, catering to many styles."</p>
           <span class="mt-2 block font-semibold">- Alex K.</span>
         </div>
         <div class="bg-white shadow rounded-lg p-8" data-aos="fade-left" data-aos-delay="200">
-          <img :src="Rating" alt="rating" class="pb-2">
+          <img :src="Rating" alt="rating" class="pb-2" />
           <p>"The collection of shoes is not only diverse but always on point."</p>
           <span class="mt-2 block font-semibold">- James L.</span>
         </div>

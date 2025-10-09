@@ -4,6 +4,9 @@ import NikeAirMax1 from "@/asset/images/NikeAirMax1.png";
 import Vans from "@/asset/images/Vans.png";
 import NikeShadow from "@/asset/images/NikeShadow.png";
 import NewBalance from "@/asset/images/NewBalance.png";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 export default {
   name: "ProductPage",
   data() {
@@ -83,13 +86,26 @@ export default {
       ],
     };
   },
+  mounted() {
+    AOS.init({
+      once: true,
+      duration: 800,
+      easing: "ease-in-out",
+    });
+  },
+  updated() {
+    AOS.refresh();
+  },
 };
 </script>
 
 <template>
-  <main class="container mx-auto py-8 px-6 sm:px-16 lg:px-[140px] pb-24 md:pb-30">
+  <main
+    class="container mx-auto py-8 px-6 sm:px-16 lg:px-[140px] pb-24 md:pb-30"
+    data-aos="fade-up"
+  >
     <!-- Breadcrumb Navigation -->
-    <div class="mb-4 text-sm text-gray-500">
+    <div class="mb-4 text-sm text-gray-500" data-aos="fade-down" data-aos-delay="100">
       <span>Home</span>
       <span class="mx-2">></span>
       <span>Product</span>
@@ -97,7 +113,7 @@ export default {
 
     <div class="flex flex-col md:flex-row -mx-4">
       <!-- Filters Sidebar -->
-      <aside class="w-full md:w-1/4 px-4 mb-8 md:mb-0">
+      <aside class="w-full md:w-1/4 px-4 mb-8 md:mb-0" data-aos="fade-right" data-aos-delay="200">
         <div class="sticky top-8">
           <div class="flex justify-between items-center mb-4">
             <h2 class="text-xl font-semibold">Filters</h2>
@@ -242,8 +258,12 @@ export default {
       </aside>
 
       <!-- Products Grid -->
-      <div class="w-full md:w-3/4 px-4">
-        <div class="flex flex-col sm:flex-row justify-between items-center mb-6">
+      <div class="w-full md:w-3/4 px-4" data-aos="fade-left" data-aos-delay="200">
+        <div
+          class="flex flex-col sm:flex-row justify-between items-center mb-6"
+          data-aos="fade-up"
+          data-aos-delay="300"
+        >
           <h1 class="text-3xl font-bold mb-4 sm:mb-0">Product</h1>
           <div class="flex items-center text-sm text-gray-500">
             <span>Showing 1-10 of 100 Products</span>
@@ -261,7 +281,13 @@ export default {
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           <!-- Product Cards -->
-          <div v-for="product in products" :key="product.id" class="text-center">
+          <div
+            v-for="(product, idx) in products"
+            :key="product.id"
+            class="text-center"
+            :data-aos="'zoom-in'"
+            :data-aos-delay="100 + idx * 100"
+          >
             <div class="bg-gray-100 rounded-lg p-4 mb-2 overflow-hidden">
               <img
                 :src="product.image"
@@ -307,7 +333,7 @@ export default {
         </div>
 
         <!-- Pagination -->
-        <div class="flex justify-center items-center mt-8">
+        <div class="flex justify-center items-center mt-8" data-aos="fade-up" data-aos-delay="400">
           <button class="p-2 border rounded-md hover:bg-gray-100">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -342,7 +368,6 @@ export default {
     </div>
   </main>
 </template>
-
 
 <style scoped>
 /* Anda dapat menambahkan style scoped khusus di sini jika diperlukan */

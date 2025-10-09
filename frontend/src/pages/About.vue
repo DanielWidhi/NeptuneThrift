@@ -12,6 +12,7 @@ import Aboutben3 from "@/asset/images/icons/SustainableChoice.png";
     <!-- ======================================= -->
     <section
       class="relative h-[500px] bg-gray-900 text-white flex items-center justify-center text-center"
+      data-aos="fade-up"
     >
       <!-- Background Image -->
       <img
@@ -20,12 +21,12 @@ import Aboutben3 from "@/asset/images/icons/SustainableChoice.png";
         class="absolute inset-0 w-full h-full object-cover bg-black opacity-50"
       />
       <!-- Konten -->
-      <div class="relative z-10 px-4">
-        <h1 class="text-4xl md:text-6xl font-bold mb-4">
+      <div class="relative z-10 px-4" data-aos="zoom-in" data-aos-delay="100">
+        <h1 class="text-4xl md:text-6xl font-bold mb-4" data-aos="fade-down" data-aos-delay="150">
           Step Into Style with <br />
           Thrifted Footwear.
         </h1>
-        <p class="max-w-2xl mx-auto text-gray-200">
+        <p class="max-w-2xl mx-auto text-gray-200" data-aos="fade-up" data-aos-delay="250">
           Discover handpicked experiences, iconic landmarks, and hidden gems—each destination chosen
           to immerse you in the soul of Bali’s culture and beauty.
         </p>
@@ -35,12 +36,16 @@ import Aboutben3 from "@/asset/images/icons/SustainableChoice.png";
     <!-- ======================================= -->
     <!-- About Section -->
     <!-- ======================================= -->
-    <section class="py-16 sm:py-20 px-6 sm:px-16 lg:px-[140px] pb-24 md:pb-30">
+    <section class="py-16 sm:py-20 px-6 sm:px-16 lg:px-[140px] pb-24 md:pb-30" data-aos="fade-up">
       <div class="container mx-auto px-4 text-center">
-        <h2 class="text-3xl md:text-4xl font-bold mb-4">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4" data-aos="fade-up" data-aos-delay="100">
           About <span class="text-blue-600">NeptuneThrift</span>
         </h2>
-        <p class="max-w-3xl mx-auto text-gray-600 leading-relaxed">
+        <p
+          class="max-w-3xl mx-auto text-gray-600 leading-relaxed"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
           Bringing quality thrift shoes and limited-edition pre-orders, so everyone can stay stylish
           without overspending. What started as a hobby of hunting unique shoes turned into a
           vision: discovering great pairs worth wearing again. That’s how NeptuneThrift was built —
@@ -53,26 +58,29 @@ import Aboutben3 from "@/asset/images/icons/SustainableChoice.png";
     <!-- ======================================= -->
     <!-- Why Choose Us Section -->
     <!-- ======================================= -->
-    <section class="py-16 sm:py-20 px-6 sm:px-16 lg:px-[140px] pb-24 md:pb-30 bg-gray-50">
+    <section
+      class="py-16 sm:py-20 px-6 sm:px-16 lg:px-[140px] pb-24 md:pb-30 bg-gray-50"
+      data-aos="fade-up"
+    >
       <div class="container mx-auto px-4 text-center">
-        <h2 class="text-3xl md:text-4xl font-bold mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold mb-12" data-aos="fade-up" data-aos-delay="100">
           “Why Choose <span class="text-blue-600">NeptuneThrift?</span>”
         </h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
           <!-- Feature 1: Curated Thrift Shoes -->
-          <div class="flex flex-col items-center">
+          <div class="flex flex-col items-center" data-aos="fade-right" data-aos-delay="150">
             <img :src="Aboutben1" alt="Curated Shoes" class="h-24 mb-4" />
             <h3 class="text-xl font-semibold mb-2">Curated Thrift Shoes</h3>
             <p class="text-gray-600">Handpicked quality pairs — unique style made easy.</p>
           </div>
           <!-- Feature 2: Affordable Style -->
-          <div class="flex flex-col items-center">
+          <div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="200">
             <img :src="Aboutben2" alt="Affordable Style" class="h-24 mb-4" />
             <h3 class="text-xl font-semibold mb-2">Affordable Style</h3>
             <p class="text-gray-600">Branded preloved shoes — stay stylish, spend less.</p>
           </div>
           <!-- Feature 3: Sustainable Choice -->
-          <div class="flex flex-col items-center">
+          <div class="flex flex-col items-center" data-aos="fade-left" data-aos-delay="250">
             <img :src="Aboutben3" alt="Sustainable Choice" class="h-24 mb-4" />
             <h3 class="text-xl font-semibold mb-2">Sustainable Choice</h3>
             <p class="text-gray-600">Reduce waste, support the planet.</p>
@@ -82,10 +90,10 @@ import Aboutben3 from "@/asset/images/icons/SustainableChoice.png";
     </section>
 
     <!-- RATE WEBSITE -->
-    <section class="py-18 px-8 sm:px-16 lg:px-[140px] pb-24 md:pb-30">
+    <section class="py-18 px-8 sm:px-16 lg:px-[140px] pb-24 md:pb-30" data-aos="fade-up">
       <div class="flex flex-col md:flex-row gap-10 md:gap-8">
         <!-- Info -->
-        <div class="flex flex-col flex-2">
+        <div class="flex flex-col flex-2" data-aos="fade-right" data-aos-delay="100">
           <h1 class="text-4xl sm:text-[42px] font-bold leading-tight sm:leading-[1.2]">
             Rate Our <span class="text-blue-800">Website</span>
           </h1>
@@ -96,7 +104,11 @@ import Aboutben3 from "@/asset/images/icons/SustainableChoice.png";
         </div>
 
         <!-- Rating Form -->
-        <div class="p-4 sm:p-6 rounded-3xl w-full flex-1 border border-gray-200">
+        <div
+          class="p-4 sm:p-6 rounded-3xl w-full flex-1 border border-gray-200"
+          data-aos="fade-left"
+          data-aos-delay="200"
+        >
           <h4 class="font-semibold text-2xl sm:text-[32px]">Leave a Rating</h4>
           <p class="text-gray-600 text-sm sm:text-base mb-6">Feel free to send us your thoughts.</p>
           <form class="flex flex-col gap-4">
@@ -126,10 +138,13 @@ import Aboutben3 from "@/asset/images/icons/SustainableChoice.png";
     <!-- ======================================= -->
     <!-- Contact Us Section -->
     <!-- ======================================= -->
-    <section class="py-16 sm:py-20 px-6 sm:px-16 lg:px-[140px] pb-24 md:pb-30 bg-gray-50">
+    <section
+      class="py-16 sm:py-20 px-6 sm:px-16 lg:px-[140px] pb-24 md:pb-30 bg-gray-50"
+      data-aos="fade-up"
+    >
       <div class="container mx-auto px-4">
         <!-- Wrapper untuk konten agar rata kiri -->
-        <div class="flex flex-col max-w-3xl">
+        <div class="flex flex-col max-w-3xl" data-aos="fade-up" data-aos-delay="100">
           <!-- Judul, disesuaikan dengan gaya target -->
           <h2 class="text-4xl sm:text-[42px] font-semibold mb-4">
             Contact <span class="text-blue-600">Us</span>
