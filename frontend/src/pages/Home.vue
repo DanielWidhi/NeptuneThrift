@@ -6,6 +6,7 @@ import NikeAirMax1 from "@/asset/images/NikeAirMax1.png";
 import Vans from "@/asset/images/Vans.png";
 import NikeShadow from "@/asset/images/NikeShadow.png";
 import NewBalance from "@/asset/images/NewBalance.png";
+import Rating from "@/asset/images/Rating.png";
 
 const newArrivals = ref([
   {
@@ -42,9 +43,9 @@ const newArrivals = ref([
 
 const promoSelling = ref([
   { id: 1, name: "New Balance", price: 212, discount: 232, image: NewBalance, rating: 3.5 },
-  { id: 2, name: "MSBreewc X Rizky", price: 145, image: "/images/msbreewc.png", rating: 4 },
-  { id: 3, name: "Loose Fit Bermuda Shorts", price: 80, image: "/images/shorts.png", rating: 4 },
-  { id: 4, name: "Faded Skinny Jeans", price: 210, image: "/images/jeans.png", rating: 4 },
+  { id: 2, name: "Vans Old Skool", price: 145, image: Vans, rating: 4 },
+  { id: 3, name: "Nike Air Force 1", price: 80, image: NikeAirForce1, rating: 4 },
+  { id: 4, name: "Nike Air Max 1", price: 210, image: NikeAirMax1, rating: 4 },
 ]);
 </script>
 
@@ -242,15 +243,18 @@ const promoSelling = ref([
         </div>
       </div>
       <div class="grid md:grid-cols-3 gap-6">
-        <div class="bg-white shadow rounded-lg p-6" data-aos="fade-right">
+        <div class="bg-white shadow rounded-lg p-8" data-aos="fade-right">
+          <img :src="Rating" alt="rating" class="pb-2">
           <p>"I'm blown away by the quality and style of the shoes I received!"</p>
           <span class="mt-2 block font-semibold">- Sarah M.</span>
         </div>
-        <div class="bg-white shadow rounded-lg p-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="bg-white shadow rounded-lg p-8" data-aos="fade-up" data-aos-delay="100">
+          <img :src="Rating" alt="rating" class="pb-2">
           <p>"The range of options is truly remarkable, catering to many styles."</p>
           <span class="mt-2 block font-semibold">- Alex K.</span>
         </div>
-        <div class="bg-white shadow rounded-lg p-6" data-aos="fade-left" data-aos-delay="200">
+        <div class="bg-white shadow rounded-lg p-8" data-aos="fade-left" data-aos-delay="200">
+          <img :src="Rating" alt="rating" class="pb-2">
           <p>"The collection of shoes is not only diverse but always on point."</p>
           <span class="mt-2 block font-semibold">- James L.</span>
         </div>

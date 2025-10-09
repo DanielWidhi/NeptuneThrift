@@ -1,4 +1,8 @@
 <script>
+import NikeAirMax1 from "@/asset/images/NikeAirMax1.png";
+import Vans from "@/asset/images/Vans.png";
+import NikeShadow from "@/asset/images/NikeShadow.png";
+import NewBalance from "@/asset/images/NewBalance.png";
 export default {
   name: "PromoPage",
   data() {
@@ -6,43 +10,39 @@ export default {
       promoProducts: [
         {
           id: 3,
-          name: "Black Striped T-shirt",
+          name: "Nike Air Max 1",
           rating: 5.0,
           originalPrice: 150,
           discountPrice: 120,
           discount: "-30%",
-          image:
-            "https://storage.googleapis.com/gemini-prod/images/a83852cd-7f61-4560-a299-1efaf039bd87",
+          image: NikeAirMax1,
         },
         {
           id: 4,
-          name: "Skinny Fit Jeans",
+          name: "Vans Old Skool",
           rating: 3.5,
           originalPrice: 260,
           discountPrice: 240,
           discount: "-20%",
-          image:
-            "https://storage.googleapis.com/gemini-prod/images/84107cb8-5a41-4c7b-9c29-373f7895111b",
+          image: Vans,
         },
         {
           id: 6,
-          name: "Sleeve Striped T-shirt",
+          name: "New Balance 574",
           rating: 4.5,
           originalPrice: 160,
           discountPrice: 130,
           discount: "-30%",
-          image:
-            "https://storage.googleapis.com/gemini-prod/images/8ac9210c-fb93-4e4b-bb68-5276329c3666",
+          image: NewBalance,
         },
         {
           id: 7,
-          name: "Vertical Striped Shirt",
+          name: "Nike jordan 1 Mid",
           rating: 5.0,
           originalPrice: 232,
           discountPrice: 212,
           discount: "-20%",
-          image:
-            "https://storage.googleapis.com/gemini-prod/images/0c007c09-a178-45a2-850f-21f456c12740",
+          image: NikeShadow,
         },
       ],
     };

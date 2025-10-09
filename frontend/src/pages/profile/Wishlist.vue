@@ -1,7 +1,8 @@
 <script setup>
 import { ref } from 'vue'
-import Sidebar from '@/components/Sidebar.vue' // Pastikan path ini sudah benar
-// Anda bisa mengganti data statis ini dengan data dari API
+import Sidebar from '@/components/Sidebar.vue'
+import NikeAirMax1 from "@/asset/images/NikeAirMax1.png";
+import Vans from "@/asset/images/Vans.png";
 const wishlistItems = ref([
   {
     id: 1,
@@ -10,8 +11,7 @@ const wishlistItems = ref([
     price: 240,
     originalPrice: 260,
     discount: 20,
-    // Ganti dengan path gambar yang sesuai di proyek Anda
-    imageUrl: 'https://i.ibb.co/6rPyMJK/patta-x-nike-air-max-1.png'
+    imageUrl: NikeAirMax1
   },
   {
     id: 2,
@@ -20,8 +20,7 @@ const wishlistItems = ref([
     price: 120,
     originalPrice: null,
     discount: null,
-    // Ganti dengan path gambar yang sesuai di proyek Anda
-    imageUrl: 'https://i.ibb.co/1MjzXzQ/nike-air-force-1.png'
+    imageUrl: Vans
   }
 ])
 

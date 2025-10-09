@@ -1,3 +1,9 @@
+#  PENTING UNTUK DI BACA  version 1 #
+1. ketik "npm install" di terminal
+2. jangan lupa install flowbite dengan mengetik "npm install flowbite" di terminal
+
+
+
 # .
 
 This template should help get you started developing with Vue 3 in Vite.

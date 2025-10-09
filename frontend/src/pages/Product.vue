@@ -1,4 +1,9 @@
 <script>
+import NikeAirForce1 from "@/asset/images/NikeAirForce1.png";
+import NikeAirMax1 from "@/asset/images/NikeAirMax1.png";
+import Vans from "@/asset/images/Vans.png";
+import NikeShadow from "@/asset/images/NikeShadow.png";
+import NewBalance from "@/asset/images/NewBalance.png";
 export default {
   name: "ProductPage",
   data() {
@@ -6,83 +11,74 @@ export default {
       products: [
         {
           id: 1,
-          name: "Gradient Graphic T-shirt",
+          name: "New Balance Sneakers",
           rating: 3.5,
           originalPrice: 145,
-          image:
-            "https://storage.googleapis.com/gemini-prod/images/f3fa5958-3162-4309-868c-100257e55490",
+          image: NewBalance,
         },
         {
           id: 2,
-          name: "Polo with Tipping Details",
+          name: "Nike Shadow",
           rating: 4.5,
           originalPrice: 180,
-          image:
-            "https://storage.googleapis.com/gemini-prod/images/05179093-e4d5-45a7-8051-5126839a8c60",
+          image: NikeShadow,
         },
         {
           id: 3,
-          name: "Black Striped T-shirt",
+          name: "Nike Air Max 1",
           rating: 5.0,
           originalPrice: 150,
           discountPrice: 120,
           discount: "-30%",
-          image:
-            "https://storage.googleapis.com/gemini-prod/images/a83852cd-7f61-4560-a299-1efaf039bd87",
+          image: NikeAirMax1,
         },
         {
           id: 4,
-          name: "Skinny Fit Jeans",
+          name: "Vans Old Skool",
           rating: 3.5,
           originalPrice: 260,
           discountPrice: 240,
           discount: "-20%",
-          image:
-            "https://storage.googleapis.com/gemini-prod/images/84107cb8-5a41-4c7b-9c29-373f7895111b",
+          image: Vans,
         },
         {
           id: 5,
-          name: "Checkered Shirt",
+          name: "Nike Air Force 1",
           rating: 4.5,
           originalPrice: 180,
-          image:
-            "https://storage.googleapis.com/gemini-prod/images/d8c1c24e-3788-46f9-8472-358046b97623",
+          image: NikeAirForce1,
         },
         {
           id: 6,
-          name: "Sleeve Striped T-shirt",
+          name: "Vans Classic Slip-On",
           rating: 4.5,
           originalPrice: 160,
           discountPrice: 130,
           discount: "-30%",
-          image:
-            "https://storage.googleapis.com/gemini-prod/images/8ac9210c-fb93-4e4b-bb68-5276329c3666",
+          image: Vans,
         },
         {
           id: 7,
-          name: "Vertical Striped Shirt",
+          name: "Nike jordan 1 Mid",
           rating: 5.0,
           originalPrice: 232,
           discountPrice: 212,
           discount: "-20%",
-          image:
-            "https://storage.googleapis.com/gemini-prod/images/0c007c09-a178-45a2-850f-21f456c12740",
+          image: NikeAirMax1,
         },
         {
           id: 8,
-          name: "Courage Graphic T-shirt",
+          name: "New Balance 574",
           rating: 4.0,
           originalPrice: 145,
-          image:
-            "https://storage.googleapis.com/gemini-prod/images/4294b07c-9ef4-41d8-81d4-06788d40026e",
+          image: NewBalance,
         },
         {
           id: 9,
-          name: "Loose Fit Bermuda Shorts",
+          name: "Nike Air Max 90",
           rating: 3.0,
           originalPrice: 80,
-          image:
-            "https://storage.googleapis.com/gemini-prod/images/e8c25f4b-3cc3-4a6c-81b0-13e71d374a2f",
+          image: Vans,
         },
       ],
     };

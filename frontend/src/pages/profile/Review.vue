@@ -2,6 +2,7 @@
 import { ref, reactive } from 'vue'
 import Sidebar from '@/components/Sidebar.vue' // Pastikan path ini benar
 import DefaultAvatar from '@/asset/images/user_profile/default-avatar.png' // Import avatar default
+import Rating from '@/asset/images/Rating.png' // Komponen rating bintang
 
 // Data reaktif untuk informasi pengguna yang akan dikirim ke Sidebar
 const userProfile = reactive({
@@ -14,44 +15,26 @@ const userProfile = reactive({
 const reviews = ref([
   {
     id: 1,
-    rating: 5,
+    rating: Rating,
     text: "I'm blown away by the quality and style of the clothes I received from Shop.co. From casual wear to elegant dresses, every piece I've bought has exceeded my expectations."
   },
   {
     id: 2,
-    rating: 5,
+    rating: Rating,
     text: "I'm blown away by the quality and style of the clothes I received from Shop.co. From casual wear to elegant dresses, every piece I've bought has exceeded my expectations."
   },
   {
     id: 3,
-    rating: 5,
+    rating: Rating,
     text: "I'm blown away by the quality and style of the clothes I received from Shop.co. From casual wear to elegant dresses, every piece I've bought has exceeded my expectations."
   },
   {
     id: 4,
-    rating: 5,
+    rating: Rating,
     text: "I'm blown away by the quality and style of the clothes I received from Shop.co. From casual wear to elegant dresses, every piece I've bought has exceeded my expectations."
   }
 ])
 
-// Komponen kecil untuk menampilkan bintang rating
-const StarRating = {
-  props: {
-    rating: {
-      type: Number,
-      required: true
-    }
-  },
-  template: `
-    <div class="flex items-center">
-      <template v-for="n in 5" :key="n">
-        <svg class="w-6 h-6" :class="n <= rating ? 'text-yellow-400' : 'text-gray-300'" fill="currentColor" viewBox="0 0 20 20">
-          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.957a1 1 0 00.95.69h4.16c.969 0 1.371 1.24.588 1.81l-3.363 2.444a1 1 0 00-.364 1.118l1.287 3.957c.3.921-.755 1.688-1.54 1.118l-3.363-2.444a1 1 0 00-1.175 0l-3.363 2.444c-.784.57-1.838-.197-1.539-1.118l1.287-3.957a1 1 0 00-.364-1.118L2.07 9.384c-.783-.57-.38-1.81.588-1.81h4.16a1 1 0 00.95-.69L9.049 2.927z" />
-        </svg>
-      </template>
-    </div>
-  `
-}
 </script>
 
 <template>
@@ -73,7 +56,7 @@ const StarRating = {
             class="border border-gray-200 rounded-xl p-6 shadow-sm"
           >
             <!-- Komponen Rating Bintang -->
-            <StarRating :rating="review.rating" />
+            <img :src="review.rating" alt="Rating" />
 
             <!-- Teks Ulasan -->
             <p class="mt-4 text-gray-600 leading-relaxed">

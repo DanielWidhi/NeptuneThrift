@@ -2,7 +2,9 @@
 import { ref, computed, reactive } from 'vue'
 import Sidebar from '@/components/Sidebar.vue' // Pastikan path ini benar
 import DefaultAvatar from '@/asset/images/user_profile/default-avatar.png' // Import avatar default
-
+import Vans from "@/asset/images/Vans.png";
+import NikeShadow from "@/asset/images/NikeShadow.png";
+import NewBalance from "@/asset/images/NewBalance.png";
 // Data reaktif untuk informasi pengguna yang akan dikirim ke Sidebar
 const userProfile = reactive({
   username: 'FIKY KNJT',
@@ -14,30 +16,30 @@ const userProfile = reactive({
 const cartItems = ref([
   {
     id: 1,
-    name: 'Gradient Graphic T-shirt',
+    name: 'Nike Air Shadow 2.0',
     size: 'Large',
     color: 'White',
     price: 145,
     quantity: 1,
-    imageUrl: 'https://i.ibb.co/6wmTB8s/gradient-t-shirt.png' // Ganti dengan path gambar Anda
+    imageUrl: NikeShadow
   },
   {
     id: 2,
-    name: 'Checkered Shirt',
+    name: 'Vans Old Skool',
     size: 'Medium',
     color: 'Red',
     price: 180,
     quantity: 1,
-    imageUrl: 'https://i.ibb.co/3k5fCGr/checkered-shirt.png' // Ganti dengan path gambar Anda
+    imageUrl: Vans
   },
   {
     id: 3,
-    name: 'Skinny Fit Jeans',
+    name: 'New Balance 574',
     size: 'Large',
     color: 'Blue',
     price: 240,
     quantity: 1,
-    imageUrl: 'https://i.ibb.co/Jqj90sK/skinny-jeans.png' // Ganti dengan path gambar Anda
+    imageUrl: NewBalance
   }
 ])
 
@@ -151,17 +153,19 @@ const proceedToCheckout = () => {
 
         <!-- Total Harga dan Checkout -->
         <div v-if="cartItems.length > 0" class="mt-12 flex flex-col items-end gap-6">
-          <div class="text-right">
-            <p class="text-2xl md:text-3xl font-bold text-gray-800">
+          <div class="pr-2">
+            <p class="text-2xl md:text-xl font-bold text-gray-800">
               Total Price: ${{ totalPrice }}
             </p>
           </div>
-          <button
-            @click="proceedToCheckout"
-            class="w-full sm:w-auto rounded-full bg-blue-700 px-10 py-3 text-lg font-bold text-white transition hover:bg-blue-500"
-          >
-            Check out now
-          </button>
+          <div>
+            <button
+              @click="proceedToCheckout"
+              class="w-full sm:w-auto rounded-full bg-blue-700 px-6 py-3 text-md font-bold text-white transition hover:bg-blue-500"
+            >
+              Check out now
+            </button>
+          </div>
         </div>
       </div>
     </main>

@@ -144,7 +144,7 @@ onUnmounted(() => {
       <div class="hidden md:flex items-center space-x-10">
         <!-- Ikon Keranjang Belanja (dengan efek garis bawah) -->
         <div class="group flex flex-col items-center">
-          <RouterLink to="/cart" aria-label="View Shopping Cart">
+          <RouterLink to="/user/cart" aria-label="View Shopping Cart">
             <img
               :src="cartIcon"
               alt="Shopping Cart"
@@ -154,8 +154,8 @@ onUnmounted(() => {
           <span
             class="mt-1 h-0.5 bg-blue-500 rounded-full transition-all duration-400 ease-out"
             :class="{
-              'w-8': route.path === '/cart',
-              'w-0 group-hover:w-8': route.path !== '/cart',
+              'w-8': route.path === '/user/cart',
+              'w-0 group-hover:w-8': route.path !== '/user/cart',
             }"
           ></span>
         </div>
@@ -181,6 +181,12 @@ onUnmounted(() => {
                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50"
               >
                 My Profile
+              </RouterLink>
+              <RouterLink
+                to="/admin/dashboard"
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50"
+              >
+                My Dashboard
               </RouterLink>
               <a
                 href="#"
