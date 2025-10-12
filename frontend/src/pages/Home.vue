@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import GambarHome from "@/asset/images/GambarHome.png";
 import NikeAirForce1 from "@/asset/images/NikeAirForce1.png";
 import NikeAirMax1 from "@/asset/images/NikeAirMax1.png";
@@ -47,6 +47,18 @@ const promoSelling = ref([
   { id: 3, name: "Nike Air Force 1", price: 80, image: NikeAirForce1, rating: 4 },
   { id: 4, name: "Nike Air Max 1", price: 210, image: NikeAirMax1, rating: 4 },
 ]);
+
+// --- LOGIKA CAROUSEL ---
+const brands = ref(["NIKE", "VERSACE", "ZARA", "GUCCI", "PRADA", "Calvin Klein"]);
+
+// Gandakan array brand untuk loop animasi yang mulus
+const duplicatedBrands = computed(() => [
+  ...brands.value,
+  ...brands.value,
+  ...brands.value, // Gandakan minimal 3x agar track cukup panjang
+  ...brands.value, 
+]);
+// --- AKHIR LOGIKA CAROUSEL ---
 </script>
 
 <template>
@@ -79,17 +91,17 @@ const promoSelling = ref([
       </div>
     </section>
 
-    <!-- BRAND STRIP -->
+    <!-- BRAND STRIP (MODIFIED WITH PURE CSS ANIMATION LOOP) -->
     <section
-      class="bg-blue-900 py-8 flex justify-center gap-12 text-white font-semibold text-lg"
+      class="bg-blue-900 py-8 text-white font-semibold text-lg overflow-hidden brand-carousel-container"
       data-aos="fade-up"
     >
-      <span data-aos="flip-left">NIKE</span>
-      <span data-aos="flip-left" data-aos-delay="50">VERSACE</span>
-      <span data-aos="flip-left" data-aos-delay="100">ZARA</span>
-      <span data-aos="flip-left" data-aos-delay="150">GUCCI</span>
-      <span data-aos="flip-left" data-aos-delay="200">PRADA</span>
-      <span data-aos="flip-left" data-aos-delay="250">Calvin Klein</span>
+      <div class="flex scrolling-track">
+        <!-- Render list brand yang sudah digandakan -->
+        <div v-for="(brand, index) in duplicatedBrands" :key="index" class="px-16">
+          <span>{{ brand }}</span>
+        </div>
+      </div>
     </section>
 
     <!-- NEW ARRIVALS -->
@@ -237,7 +249,10 @@ const promoSelling = ref([
           OUR HAPPY <span class="text-blue-800">CUSTOMERS</span>
         </h2>
         <div>
-          <a href="#" class="bg-blue-800 text-white px-4 py-3 rounded-lg shadow" data-aos="zoom-in"
+          <a
+            href="/detailreview"
+            class="bg-blue-800 text-white px-4 py-3 rounded-lg shadow"
+            data-aos="zoom-in"
             >More Review</a
           >
         </div>
@@ -307,3 +322,38 @@ const promoSelling = ref([
     </section>
   </div>
 </template>
+
+<style scoped>
+/* Definisikan keyframes untuk animasi scroll */
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.brand-carousel-container {
+  overflow: hidden;
+}
+
+.scrolling-track {
+  display: flex;
+  white-space: nowrap;
+  animation: scroll 20s linear infinite;
+}
+
+/* Terapkan animasi ke track */
+.scrolling-track {
+  /* Durasi animasi: Anda bisa ubah 20s menjadi lebih cepat (misal 15s) atau lebih lambat (misal 30s) */
+  animation: scroll 20s linear infinite;
+  /* 'linear' -> kecepatan konstan */
+  /* 'infinite' -> mengulang selamanya tanpa henti dan tanpa 'reverse' */
+}
+
+/* Jeda animasi saat mouse hover di atas container */
+.brand-carousel-container:hover .scrolling-track {
+  animation-play-state: paused;
+}
+</style>

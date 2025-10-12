@@ -12,6 +12,7 @@ import ProductPage from '@/pages/Product.vue'
 import PromoPage from '@/pages/Promo.vue'
 import AboutPage from '@/pages/About.vue'
 import DetailProductPage from '@/pages/DetailProduct.vue'
+import DetailReviewPage from '@/pages/Review.vue'
 // User Profile
 import Profile from '@/pages/profile/Profile.vue'
 import Cart from '@/pages/profile/Cart.vue'
@@ -57,6 +58,11 @@ const router = createRouter({
           path: '/detailproduct',
           name: 'DetailProduct',
           component: DetailProductPage,
+        },
+        {
+          path: '/detailreview',
+          name: 'DetailReview',
+          component: DetailReviewPage,
         },
         {
           path: '/user',

@@ -1,5 +1,12 @@
 <script setup>
+import DashboardIcon from "@/components/icons/DashboardIcon.vue";
 import logofootwear from "@/asset/images/Footwear.png";
+import Users from "@/components/icons/User.vue";
+import Product from "@/components/icons/Product.vue";
+import Comment from "@/components/icons/Comment.vue";
+import Cart from "@/components/icons/Cart.vue";
+import CategoriesIcon from "@/components/icons/CategoriesIcon.vue";
+import StatusItems from "@/components/icons/StatusItems.vue";
 </script>
 <template>
   <aside
@@ -23,7 +30,7 @@ import logofootwear from "@/asset/images/Footwear.png";
           class="flex gap-3 items-center py-2 px-4 font-medium hover:bg-blue-300 transition-all duration-50 rounded-xl"
           :class="$route.name === 'Dashboard' ? 'bg-blue-300 text-gray-950' : ''"
         >
-          <Home
+          <DashboardIcon
             class="size-5"
             :class="$route.name === 'Dashboard' ? ' text-gray-950' : 'text-neu-500'"
           />Dashboard
@@ -49,7 +56,7 @@ import logofootwear from "@/asset/images/Footwear.png";
           class="flex gap-3 items-center py-2 px-4 font-medium hover:bg-blue-300 transition-all duration-50 rounded-xl"
           :class="$route.path.startsWith('/admin/products') ? 'bg-blue-300 text-gray-950' : ''"
         >
-          <OutlinedLocation
+          <Product
             class="size-5"
             :class="$route.path.startsWith('/admin/products') ? ' text-gray-950' : 'text-neu-500'"
           />Products
@@ -59,7 +66,7 @@ import logofootwear from "@/asset/images/Footwear.png";
           class="flex gap-3 items-center py-2 px-4 font-medium hover:bg-blue-300 transition-all duration-50 rounded-xl"
           :class="$route.path.startsWith('/admin/categories') ? 'bg-blue-300 text-gray-950' : ''"
         >
-          <Tag
+          <CategoriesIcon
             class="size-5"
             :class="$route.path.startsWith('/admin/categories') ? ' text-gray-950' : 'text-neu-500'"
           />Categories
@@ -69,7 +76,7 @@ import logofootwear from "@/asset/images/Footwear.png";
           class="flex gap-3 items-center py-2 px-4 font-medium hover:bg-blue-300 transition-all duration-50 rounded-xl"
           :class="$route.path.startsWith('/admin/transactions') ? 'bg-blue-300 text-gray-950' : ''"
         >
-          <Parking
+          <Cart
             class="size-5"
             :class="$route.path.startsWith('/admin/transactions') ? ' text-gray-950' : 'text-neu-500'"
           />Transaction History's
@@ -79,7 +86,7 @@ import logofootwear from "@/asset/images/Footwear.png";
           class="flex gap-3 items-center py-2 px-4 font-medium hover:bg-blue-300 transition-all duration-50 rounded-xl"
           :class="$route.path.startsWith('/admin/status') ? 'bg-blue-300 text-gray-950' : ''"
         >
-          <Message
+          <StatusItems
             class="size-5"
             :class="$route.path.startsWith('/admin/status') ? ' text-gray-950' : 'text-neu-500'"
           />Status Products
@@ -93,7 +100,7 @@ import logofootwear from "@/asset/images/Footwear.png";
           :class="$route.path.startsWith('/admin/comments') ? 'bg-blue-300 text-gray-950' : ''"
         >
           <span class="flex items-center gap-3"
-            ><MapPin
+            ><Comment
               class="size-5"
               :class="
                 $route.path.startsWith('/admin/comments') ? ' text-gray-950' : 'text-neu-500'

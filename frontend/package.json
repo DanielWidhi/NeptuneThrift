@@ -15,6 +15,7 @@
   "dependencies": {
     "@tailwindcss/vite": "^4.1.14",
     "aos": "^3.0.0-beta.6",
+    "axios": "^1.12.2",
     "flowbite": "^3.1.2",
     "pinia": "^3.0.3",
     "sweetalert2": "^11.23.0",

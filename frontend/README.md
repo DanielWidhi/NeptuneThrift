@@ -1,6 +1,7 @@
 #  PENTING UNTUK DI BACA  version 1 #
 1. ketik "npm install" di terminal
 2. jangan lupa install flowbite dengan mengetik "npm install flowbite" di terminal
+3. jangan lupa install axios dengan mengetik "npm install axios" di terminal
 
 
 
