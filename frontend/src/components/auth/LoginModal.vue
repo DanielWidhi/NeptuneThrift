@@ -1,10 +1,10 @@
 <template>
   <!-- Transisi untuk efek fade in/out -->
   <transition name="modal-fade">
-    <!-- Latar belakang gelap (overlay) -->
+    <!-- Overlay: Blur background dan translucent, bukan gelap -->
     <div
       v-if="show"
-      class="fixed inset-0 flex items-center justify-center z-[9999] pointer-events-auto"
+      class="fixed inset-0 flex items-center justify-center z-[9999] pointer-events-auto modal-blur-overlay"
     >
       <!-- Kontainer Modal -->
       <div
@@ -24,6 +24,19 @@
 
         <!-- Body Modal (Form Login) -->
         <div class="p-6">
+          <!-- Tombol Login Google -->
+          <button
+            type="button"
+            class="flex items-center justify-center w-full gap-3 border border-gray-300 rounded py-2 px-4 mb-6 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-100"
+            @click="handleGoogleLogin"
+          >
+            <img
+              src="https://www.svgrepo.com/show/475656/google-color.svg"
+              alt="Google"
+              class="w-5 h-5"
+            />
+            <span class="text-gray-700 font-semibold">Login dengan Google</span>
+          </button>
           <form @submit.prevent="handleLogin">
             <!-- Input Email -->
             <div class="mb-4">
@@ -107,6 +120,11 @@ export default {
       // Menutup modal setelah login berhasil disubmit
       this.closeModal();
     },
+    // Method untuk login dengan Google
+    handleGoogleLogin() {
+      // Emit event, kembangkan sesuai kebutuhan (integrasi dengan Google OAuth dsb)
+      this.$emit("google-login");
+    },
   },
 };
 </script>
@@ -129,5 +147,11 @@ export default {
 .modal-fade-enter-from,
 .modal-fade-leave-to {
   opacity: 0;
+}
+/* Blur Overlay: tambahkan efek blur dan sedikit transparansi di background */
+.modal-blur-overlay {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.25);
 }
 </style>
