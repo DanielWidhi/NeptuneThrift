@@ -8,8 +8,8 @@ const wishlistItems = ref([
     id: 1,
     name: 'Patta x Nike Air Max 1',
     rating: 3.5,
-    price: 240,
-    originalPrice: 260,
+    price: 2400000,
+    originalPrice: 2600000,
     discount: 20,
     imageUrl: NikeAirMax1
   },
@@ -17,7 +17,7 @@ const wishlistItems = ref([
     id: 2,
     name: 'Nike Air Force 1',
     rating: 4.5,
-    price: 120,
+    price: 1200000,
     originalPrice: null,
     discount: null,
     imageUrl: Vans
@@ -74,9 +74,9 @@ const StarRating = {
 
             <!-- Info Harga -->
             <div class="flex items-center gap-3 mt-1">
-              <p class="text-2xl font-bold text-gray-900">${{ item.price }}</p>
+              <p class="text-2xl font-bold text-gray-900">Rp.{{ item.price }}</p>
               <p v-if="item.originalPrice" class="text-lg text-gray-400 line-through">
-                ${{ item.originalPrice }}
+                Rp.{{ item.originalPrice }}
               </p>
               <span
                 v-if="item.discount"

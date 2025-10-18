@@ -16,22 +16,22 @@ export default {
           id: 1,
           name: "New Balance Sneakers",
           rating: 3.5,
-          originalPrice: 145,
+          originalPrice: 1450000,
           image: NewBalance,
         },
         {
           id: 2,
           name: "Nike Shadow",
           rating: 4.5,
-          originalPrice: 180,
+          originalPrice: 1800000,
           image: NikeShadow,
         },
         {
           id: 3,
           name: "Nike Air Max 1",
           rating: 5.0,
-          originalPrice: 150,
-          discountPrice: 120,
+          originalPrice: 1500000,
+          discountPrice: 1200000,
           discount: "-30%",
           image: NikeAirMax1,
         },
@@ -39,8 +39,8 @@ export default {
           id: 4,
           name: "Vans Old Skool",
           rating: 3.5,
-          originalPrice: 260,
-          discountPrice: 240,
+          originalPrice: 2600000,
+          discountPrice: 2400000,
           discount: "-20%",
           image: Vans,
         },
@@ -48,15 +48,15 @@ export default {
           id: 5,
           name: "Nike Air Force 1",
           rating: 4.5,
-          originalPrice: 180,
+          originalPrice: 1800000,
           image: NikeAirForce1,
         },
         {
           id: 6,
           name: "Vans Classic Slip-On",
           rating: 4.5,
-          originalPrice: 160,
-          discountPrice: 130,
+          originalPrice: 1600000,
+          discountPrice: 1300000,
           discount: "-30%",
           image: Vans,
         },
@@ -64,8 +64,8 @@ export default {
           id: 7,
           name: "Nike jordan 1 Mid",
           rating: 5.0,
-          originalPrice: 232,
-          discountPrice: 212,
+          originalPrice: 2320000,
+          discountPrice: 2120000,
           discount: "-20%",
           image: NikeAirMax1,
         },
@@ -73,14 +73,14 @@ export default {
           id: 8,
           name: "New Balance 574",
           rating: 4.0,
-          originalPrice: 145,
+          originalPrice: 1450000,
           image: NewBalance,
         },
         {
           id: 9,
           name: "Nike Air Max 90",
           rating: 3.0,
-          originalPrice: 80,
+          originalPrice: 800000,
           image: Vans,
         },
       ],
@@ -315,14 +315,14 @@ export default {
             </div>
             <p class="font-bold text-gray-900">
               <span v-if="product.discountPrice" class="text-red-500"
-                >${{ product.discountPrice }}</span
+                >Rp.{{ product.discountPrice }}</span
               >
               <span
                 v-if="product.originalPrice && product.discountPrice"
                 class="text-gray-500 line-through ml-2"
-                >${{ product.originalPrice }}</span
+                >Rp.{{ product.originalPrice }}</span
               >
-              <span v-if="!product.discountPrice">${{ product.originalPrice }}</span>
+              <span v-if="!product.discountPrice">Rp.{{ product.originalPrice }}</span>
               <span
                 v-if="product.discount"
                 class="bg-red-100 text-red-500 text-xs font-semibold ml-2 px-2 py-0.5 rounded"

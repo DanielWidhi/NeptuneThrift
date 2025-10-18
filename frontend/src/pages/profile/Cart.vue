@@ -19,7 +19,7 @@ const cartItems = ref([
     name: 'Nike Air Shadow 2.0',
     size: 'Large',
     color: 'White',
-    price: 145,
+    price: 1450000,
     quantity: 1,
     imageUrl: NikeShadow
   },
@@ -28,7 +28,7 @@ const cartItems = ref([
     name: 'Vans Old Skool',
     size: 'Medium',
     color: 'Red',
-    price: 180,
+    price: 1800000,
     quantity: 1,
     imageUrl: Vans
   },
@@ -37,7 +37,7 @@ const cartItems = ref([
     name: 'New Balance 574',
     size: 'Large',
     color: 'Blue',
-    price: 240,
+    price: 2400000,
     quantity: 1,
     imageUrl: NewBalance
   }
@@ -103,7 +103,7 @@ const proceedToCheckout = () => {
               <h2 class="text-lg font-bold text-gray-900">{{ item.name }}</h2>
               <p class="text-sm text-gray-500">Size: {{ item.size }}</p>
               <p class="text-sm text-gray-500">Color: {{ item.color }}</p>
-              <p class="text-xl font-bold text-gray-900 mt-2">${{ item.price }}</p>
+              <p class="text-xl font-bold text-gray-900 mt-2">Rp.{{ item.price }}</p>
             </div>
 
             <!-- Aksi (Kuantitas & Hapus) -->
@@ -155,7 +155,7 @@ const proceedToCheckout = () => {
         <div v-if="cartItems.length > 0" class="mt-12 flex flex-col items-end gap-6">
           <div class="pr-2">
             <p class="text-2xl md:text-xl font-bold text-gray-800">
-              Total Price: ${{ totalPrice }}
+              Total Price: Rp.{{ totalPrice }}
             </p>
           </div>
           <div>

@@ -7,45 +7,49 @@ import Vans from "@/asset/images/Vans.png";
 import NikeShadow from "@/asset/images/NikeShadow.png";
 import NewBalance from "@/asset/images/NewBalance.png";
 import Rating from "@/asset/images/Rating.png";
+import Sport from "@/asset/images/Sport.png";
+import Casual from "@/asset/images/Casual.png";
+import Formal from "@/asset/images/Formal.png";
+import Boots from "@/asset/images/Boots.png";
 
 const newArrivals = ref([
   {
     id: 1,
     name: "Nike Air Force 1",
-    price: 120,
+    price: 1200000,
     image: NikeAirForce1,
     rating: 4.5,
   },
   {
     id: 2,
     name: "Patta x Nike Air Max 1",
-    price: 240,
-    discount: 260,
+    price: 2400000,
+    discount: 2600000,
     image: NikeAirMax1,
     rating: 5,
   },
   {
     id: 3,
     name: "Vans UA Sentry Old Skool",
-    price: 180,
+    price: 1800000,
     image: Vans,
     rating: 4.5,
   },
   {
     id: 4,
     name: "Nike Airforce 1 Shadow",
-    price: 130,
-    discount: 160,
+    price: 1300000,
+    discount: 1600000,
     image: NikeShadow,
     rating: 4.5,
   },
 ]);
 
 const promoSelling = ref([
-  { id: 1, name: "New Balance", price: 212, discount: 232, image: NewBalance, rating: 3.5 },
-  { id: 2, name: "Vans Old Skool", price: 145, image: Vans, rating: 4 },
-  { id: 3, name: "Nike Air Force 1", price: 80, image: NikeAirForce1, rating: 4 },
-  { id: 4, name: "Nike Air Max 1", price: 210, image: NikeAirMax1, rating: 4 },
+  { id: 1, name: "New Balance", price: 2120000, discount: 2320000, image: NewBalance, rating: 3.5 },
+  { id: 2, name: "Vans Old Skool", price: 1450000, image: Vans, rating: 4 },
+  { id: 3, name: "Nike Air Force 1", price: 800000, image: NikeAirForce1, rating: 4 },
+  { id: 4, name: "Nike Air Max 1", price: 2100000, image: NikeAirMax1, rating: 4 },
 ]);
 
 // --- LOGIKA CAROUSEL ---
@@ -56,7 +60,7 @@ const duplicatedBrands = computed(() => [
   ...brands.value,
   ...brands.value,
   ...brands.value, // Gandakan minimal 3x agar track cukup panjang
-  ...brands.value, 
+  ...brands.value,
 ]);
 // --- AKHIR LOGIKA CAROUSEL ---
 </script>
@@ -120,9 +124,9 @@ const duplicatedBrands = computed(() => [
           <img :src="item.image" :alt="item.name" class="w-full h-48 object-cover rounded" />
           <h3 class="mt-4 font-semibold">{{ item.name }}</h3>
           <div class="flex items-center gap-2">
-            <span class="text-lg font-bold">${{ item.price }}</span>
+            <span class="text-lg font-bold">Rp.{{ item.price }}</span>
             <span v-if="item.discount" class="text-sm line-through text-gray-400"
-              >${{ item.discount }}</span
+              >Rp{{ item.discount }}</span
             >
           </div>
         </div>
@@ -148,9 +152,9 @@ const duplicatedBrands = computed(() => [
           <img :src="item.image" :alt="item.name" class="w-full h-48 object-cover rounded" />
           <h3 class="mt-4 font-semibold">{{ item.name }}</h3>
           <div class="flex items-center gap-2">
-            <span class="text-lg font-bold">${{ item.price }}</span>
+            <span class="text-lg font-bold">Rp.{{ item.price }}</span>
             <span v-if="item.discount" class="text-sm line-through text-gray-400"
-              >${{ item.discount }}</span
+              >Rp.{{ item.discount }}</span
             >
           </div>
         </div>
@@ -164,19 +168,17 @@ const duplicatedBrands = computed(() => [
     <section class="py-12 px-6 sm:px-16 lg:px-[140px] pb-24 md:pb-30">
       <div class="max-w-6xl mx-auto bg-gray-100 shadow-lg rounded-2xl p-8">
         <h2 class="text-center text-3xl font-extrabold mb-10">
-          BROWSE BY <span class="text-blue-800">DRESS STYLE</span>
+          BROWSE BY <span class="text-blue-800">SHOES STYLE</span>
         </h2>
         <!-- Grid untuk Style -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <!-- Card Casual -->
           <div
             class="relative h-64 w-[350px] rounded-xl overflow-hidden bg-cover bg-center"
-            style="
-              background-image: url('https://images.unsplash.com/photo-1593032465175-394435b7a177?q=80&w=1887&auto=format&fit=crop');
-            "
             data-aos="fade-right"
           >
-            <div class="absolute inset-0 bg-black bg-opacity-10"></div>
+          <img :src="Casual" alt="">
+            <div class="absolute inset-0"></div>
             <h3
               class="absolute top-5 left-5 text-2xl font-bold text-white"
               style="text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5)"
@@ -188,13 +190,11 @@ const duplicatedBrands = computed(() => [
           <!-- Card Formal -->
           <div
             class="relative -left-32 h-64 w-[610px] rounded-xl overflow-hidden bg-cover bg-center"
-            style="
-              background-image: url('https://images.unsplash.com/photo-1610652492515-9989937584a2?q=80&w=1887&auto=format&fit=crop');
-            "
             data-aos="fade-left"
             data-aos-delay="100"
           >
-            <div class="absolute inset-0 bg-black bg-opacity-10"></div>
+          <img :src="Formal" alt="">
+            <div class="absolute inset-0"></div>
             <h3
               class="absolute top-5 left-5 text-2xl font-bold text-white"
               style="text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5)"
@@ -206,36 +206,32 @@ const duplicatedBrands = computed(() => [
           <!-- Card Party -->
           <div
             class="relative h-64 w-[610px] rounded-xl overflow-hidden bg-cover bg-center"
-            style="
-              background-image: url('https://images.unsplash.com/photo-1516256734614-8a3c48a70c12?q=80&w=1887&auto=format&fit=crop');
-            "
             data-aos="zoom-in"
             data-aos-delay="200"
           >
-            <div class="absolute inset-0 bg-black bg-opacity-10"></div>
+          <img :src="Boots" alt="">
+            <div class="absolute inset-0"></div>
             <h3
               class="absolute top-5 left-5 text-2xl font-bold text-white"
               style="text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5)"
             >
-              Party
+              Boots
             </h3>
           </div>
 
           <!-- Card Gym -->
           <div
             class="relative -right-32 h-64 w-[355px] rounded-xl overflow-hidden bg-cover bg-center"
-            style="
-              background-image: url('https://images.unsplash.com/photo-1581009137042-c552e485697a?q=80&w=2070&auto=format&fit=crop');
-            "
             data-aos="fade-up"
             data-aos-delay="250"
           >
-            <div class="absolute inset-0 bg-black bg-opacity-10"></div>
+          <img :src="Sport" alt="">
+            <div class="absolute inset-0"></div>
             <h3
               class="absolute top-5 left-5 text-2xl font-bold text-white"
               style="text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5)"
             >
-              Gym
+              Sports
             </h3>
           </div>
         </div>

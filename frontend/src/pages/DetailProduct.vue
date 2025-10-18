@@ -1,3 +1,57 @@
+<script>
+import NikeAirForce1 from "@/asset/images/NikeAirForce1.png";
+import NikeAirMax1 from "@/asset/images/NikeAirMax1.png";
+import Vans from "@/asset/images/Vans.png";
+import NikeShadow from "@/asset/images/NikeShadow.png";
+import NewBalance from "@/asset/images/NewBalance.png";
+export default {
+  name: 'ProductDetailPage',
+  data() {
+    return {
+      product: {
+        name: 'ONE LIFE GRAPHIC T-SHIRT',
+        rating: 4.5,
+        discountPrice: 2600000,
+        originalPrice: 3000000,
+        discount: '-40%',
+        description: 'This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style.',
+        images: [
+          NikeAirForce1, // main
+          NikeAirMax1, // back
+          Vans, // model
+        ],
+      },
+      activeImage: NewBalance,
+      availableSizes: ['Small', 'Medium', 'Large', 'X-Large'],
+      selectedSize: 'Large',
+      quantity: 1,
+      relatedProducts: [
+        { id: 1, name: 'Polo with Contrast Trims', rating: 4.0, originalPrice: 2420000, discountPrice: 2120000, discount: '-20%', image: Vans },
+        { id: 2, name: 'Gradient Graphic T-shirt', rating: 3.5, originalPrice: 1450000, image: NikeAirForce1 },
+        { id: 3, name: 'Polo with Tipping Details', rating: 4.5, originalPrice: 1800000, image: NikeAirMax1 },
+        { id: 4, name: 'Black Striped T-shirt', rating: 5.0, originalPrice: 1500000, discountPrice: 1200000, discount: '-30%', image: NikeShadow },
+      ]
+    }
+  },
+  methods: {
+    setActiveImage(image) {
+      this.activeImage = image;
+    },
+    selectSize(size) {
+      this.selectedSize = size;
+    },
+    incrementQuantity() {
+      this.quantity++;
+    },
+    decrementQuantity() {
+      if (this.quantity > 1) {
+        this.quantity--;
+      }
+    }
+  }
+}
+</script>
+
 <template>
   <main class="bg-white px-8 sm:px-16 lg:px-[140px] pb-24 md:pb-30">
     <div class="container mx-auto px-4 py-8">
@@ -34,8 +88,8 @@
           </div>
 
           <div class="flex items-baseline gap-3 mb-4">
-            <span class="text-3xl font-bold text-black">${{ product.discountPrice }}</span>
-            <span class="text-2xl text-gray-400 line-through">${{ product.originalPrice }}</span>
+            <span class="text-3xl font-bold text-black">Rp.{{ product.discountPrice }}</span>
+            <span class="text-2xl text-gray-400 line-through">Rp.{{ product.originalPrice }}</span>
             <span class="bg-red-100 text-red-500 text-sm font-semibold px-2 py-0.5 rounded">{{ product.discount }}</span>
           </div>
 
@@ -73,7 +127,7 @@
       <!-- You Might Also Like Section -->
       <section class="mt-20">
         <h2 class="text-3xl font-extrabold text-center mb-8">YOU MIGHT ALSO LIKE</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           <div v-for="related in relatedProducts" :key="related.id" class="text-center">
             <div class="bg-gray-100 rounded-lg p-4 mb-2 overflow-hidden">
                 <img :src="related.image" :alt="related.name" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-300">
@@ -86,9 +140,9 @@
                 <span class="text-xs text-gray-500 ml-1">{{ related.rating.toFixed(1) }}/5</span>
             </div>
              <p class="font-bold text-gray-900">
-                <span v-if="related.discountPrice" class="text-red-500">${{ related.discountPrice }}</span>
-                <span v-if="related.originalPrice && related.discountPrice" class="text-gray-500 line-through ml-2">${{ related.originalPrice }}</span>
-                <span v-if="!related.discountPrice">${{ related.originalPrice }}</span>
+                <span v-if="related.discountPrice" class="text-red-500">Rp.{{ related.discountPrice }}</span>
+                <span v-if="related.originalPrice && related.discountPrice" class="text-gray-500 line-through ml-2">Rp.{{ related.originalPrice }}</span>
+                <span v-if="!related.discountPrice">Rp.{{ related.originalPrice }}</span>
                 <span v-if="related.discount" class="bg-red-100 text-red-500 text-xs font-semibold ml-2 px-2 py-0.5 rounded">{{ related.discount }}</span>
             </p>
           </div>
@@ -97,55 +151,6 @@
     </div>
   </main>
 </template>
-
-<script>
-export default {
-  name: 'ProductDetailPage',
-  data() {
-    return {
-      product: {
-        name: 'ONE LIFE GRAPHIC T-SHIRT',
-        rating: 4.5,
-        discountPrice: 260,
-        originalPrice: 300,
-        discount: '-40%',
-        description: 'This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style.',
-        images: [
-          'https://storage.googleapis.com/gemini-prod/images/42502f67-85b4-4903-b09f-43fc6c79a29e', // main
-          'https://storage.googleapis.com/gemini-prod/images/c0a6b577-628d-4e96-a979-91307b22a275', // back
-          'https://storage.googleapis.com/gemini-prod/images/c457319c-8519-4876-b333-d144e5902096', // model
-        ],
-      },
-      activeImage: 'https://storage.googleapis.com/gemini-prod/images/42502f67-85b4-4903-b09f-43fc6c79a29e',
-      availableSizes: ['Small', 'Medium', 'Large', 'X-Large'],
-      selectedSize: 'Large',
-      quantity: 1,
-      relatedProducts: [
-        { id: 1, name: 'Polo with Contrast Trims', rating: 4.0, originalPrice: 242, discountPrice: 212, discount: '-20%', image: 'https://storage.googleapis.com/gemini-prod/images/87e07a34-2e21-4d04-8025-455b722d3e23' },
-        { id: 2, name: 'Gradient Graphic T-shirt', rating: 3.5, originalPrice: 145, image: 'https://storage.googleapis.com/gemini-prod/images/7d36a938-2323-4560-9ff1-d13c774d8161' },
-        { id: 3, name: 'Polo with Tipping Details', rating: 4.5, originalPrice: 180, image: 'https://storage.googleapis.com/gemini-prod/images/05179093-e4d5-45a7-8051-5126839a8c60' },
-        { id: 4, name: 'Black Striped T-shirt', rating: 5.0, originalPrice: 150, discountPrice: 120, discount: '-30%', image: 'https://storage.googleapis.com/gemini-prod/images/a83852cd-7f61-4560-a299-1efaf039bd87' },
-      ]
-    }
-  },
-  methods: {
-    setActiveImage(image) {
-      this.activeImage = image;
-    },
-    selectSize(size) {
-      this.selectedSize = size;
-    },
-    incrementQuantity() {
-      this.quantity++;
-    },
-    decrementQuantity() {
-      if (this.quantity > 1) {
-        this.quantity--;
-      }
-    }
-  }
-}
-</script>
 
 <style scoped>
 /* Scoped styles can be added here if needed, but Tailwind should cover most cases. */

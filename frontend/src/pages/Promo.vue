@@ -12,8 +12,8 @@ export default {
           id: 3,
           name: "Nike Air Max 1",
           rating: 5.0,
-          originalPrice: 150,
-          discountPrice: 120,
+          originalPrice: 1500000,
+          discountPrice: 1200000,
           discount: "-30%",
           image: NikeAirMax1,
         },
@@ -21,8 +21,8 @@ export default {
           id: 4,
           name: "Vans Old Skool",
           rating: 3.5,
-          originalPrice: 260,
-          discountPrice: 240,
+          originalPrice: 2600000,
+          discountPrice: 2400000,
           discount: "-20%",
           image: Vans,
         },
@@ -30,8 +30,8 @@ export default {
           id: 6,
           name: "New Balance 574",
           rating: 4.5,
-          originalPrice: 160,
-          discountPrice: 130,
+          originalPrice: 1600000,
+          discountPrice: 1300000,
           discount: "-30%",
           image: NewBalance,
         },
@@ -39,8 +39,8 @@ export default {
           id: 7,
           name: "Nike jordan 1 Mid",
           rating: 5.0,
-          originalPrice: 232,
-          discountPrice: 212,
+          originalPrice: 2320000,
+          discountPrice: 2120000,
           discount: "-20%",
           image: NikeShadow,
         },
@@ -261,12 +261,12 @@ export default {
             </div>
             <p class="font-bold text-gray-900">
               <span v-if="product.discountPrice" class="text-red-500"
-                >${{ product.discountPrice }}</span
+                >Rp.{{ product.discountPrice }}</span
               >
               <span
                 v-if="product.originalPrice && product.discountPrice"
                 class="text-gray-500 line-through ml-2"
-                >${{ product.originalPrice }}</span
+                >Rp.{{ product.originalPrice }}</span
               >
               <span
                 v-if="product.discount"

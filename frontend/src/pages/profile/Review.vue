@@ -45,7 +45,7 @@ const reviews = ref([
     <!-- Konten Utama Halaman Ulasan -->
     <main class="w-full p-8 md:p-12">
       <div class="mx-auto max-w-7xl">
-        <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-8">Review</h1>
+        <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-8">My Review</h1>
 
         <!-- Grid untuk menampilkan kartu ulasan -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
