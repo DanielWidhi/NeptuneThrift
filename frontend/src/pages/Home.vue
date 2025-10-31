@@ -67,33 +67,41 @@ const duplicatedBrands = computed(() => [
 
 <template>
   <div class="w-full">
-    <!-- HERO -->
-    <section class="relative bg-black text-white" data-aos="fade-up">
-      <img :src="GambarHome" alt="shoes" class="w-full h-[500px] object-cover opacity-70" />
-      <div
-        class="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-start px-10"
-        data-aos="zoom-in"
-        data-aos-delay="100"
+ <!-- HERO -->
+  <section class="relative bg-black text-white" data-aos="fade-up">
+    <img :src="GambarHome" alt="shoes" class="w-full h-[500px] object-cover opacity-70" />
+
+    <!-- Konten utama (judul, paragraf, tombol) yang berada di tengah -->
+    <div
+      class="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-start px-10"
+      data-aos="zoom-in"
+      data-aos-delay="100"
+    >
+      <h1 class="text-6xl font-bold">FIND SHOES<br />THAT MATCHES<br />YOUR STYLE</h1>
+      <p class="mt-4 max-w-md">
+        Discover curated selections of thrift and limited edition shoes designed to bring out your
+        unique style.
+      </p>
+      <a
+        href="#"
+        class="mt-6 bg-blue-800 text-white px-6 py-3 rounded-lg shadow hover:bg-blue-600"
+        data-aos="fade-right"
+        data-aos-delay="200"
+        >Shop Now</a
       >
-        <h1 class="text-4xl font-bold">FIND SHOES<br />THAT MATCHES<br />YOUR STYLE</h1>
-        <p class="mt-4 max-w-md">
-          Discover curated selections of thrift and limited edition shoes designed to bring out your
-          unique style.
-        </p>
-        <a
-          href="#"
-          class="mt-6 bg-blue-800 text-white px-6 py-3 rounded-lg shadow"
-          data-aos="fade-right"
-          data-aos-delay="200"
-          >Shop Now</a
-        >
-        <div class="flex gap-8 mt-6 text-sm" data-aos="fade-left" data-aos-delay="300">
-          <span><strong>200+</strong> International Brands</span>
-          <span><strong>2,000+</strong> High Quality Products</span>
-          <span><strong>30,000+</strong> Happy Customers</span>
-        </div>
-      </div>
-    </section>
+    </div>
+
+    <!-- PERBAIKAN: Div statistik dibuat absolute dan ditempatkan di bawah -->
+    <div
+      class="absolute bottom-8 left-0 right-0 flex justify-center items-center gap-8 text-md"
+      data-aos="fade-up"
+      data-aos-delay="300"
+    >
+      <span><strong>200+</strong> International Brands</span>
+      <span><strong>2,000+</strong> High Quality Products</span>
+      <span><strong>30,000+</strong> Happy Customers</span>
+    </div>
+  </section>
 
     <!-- BRAND STRIP (MODIFIED WITH PURE CSS ANIMATION LOOP) -->
     <section

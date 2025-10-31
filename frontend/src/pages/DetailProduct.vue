@@ -22,9 +22,10 @@ export default {
         ],
       },
       activeImage: NewBalance,
-      availableSizes: ['Small', 'Medium', 'Large', 'X-Large'],
-      selectedSize: 'Large',
-      quantity: 1,
+      // 2. Fitur size diubah menggunakan angka
+      availableSizes: [40, 41, 42, 43, 44],
+      selectedSize: 42,
+      // 1. Fitur quantity dihapus dari data
       relatedProducts: [
         { id: 1, name: 'Polo with Contrast Trims', rating: 4.0, originalPrice: 2420000, discountPrice: 2120000, discount: '-20%', image: Vans },
         { id: 2, name: 'Gradient Graphic T-shirt', rating: 3.5, originalPrice: 1450000, image: NikeAirForce1 },
@@ -40,14 +41,7 @@ export default {
     selectSize(size) {
       this.selectedSize = size;
     },
-    incrementQuantity() {
-      this.quantity++;
-    },
-    decrementQuantity() {
-      if (this.quantity > 1) {
-        this.quantity--;
-      }
-    }
+    // 1. Fitur quantity dihapus dari methods
   }
 }
 </script>
@@ -87,18 +81,16 @@ export default {
             <span class="text-sm text-gray-500 ml-2">{{ product.rating }}/5</span>
           </div>
 
-          <div class="flex items-baseline gap-3 mb-4">
+          <div class="flex items-baseline gap-3 mb-6"> <!-- Memberi jarak bawah lebih besar -->
             <span class="text-3xl font-bold text-black">Rp.{{ product.discountPrice }}</span>
             <span class="text-2xl text-gray-400 line-through">Rp.{{ product.originalPrice }}</span>
             <span class="bg-red-100 text-red-500 text-sm font-semibold px-2 py-0.5 rounded">{{ product.discount }}</span>
           </div>
 
-          <p class="text-gray-600 mb-6">
-            {{ product.description }}
-          </p>
+          <!-- 3. Deskripsi dihapus dari sini -->
 
           <div class="mb-6">
-            <h3 class="text-sm font-semibold mb-2">Choose Size</h3>
+            <h3 class="text-sm font-semibold mb-2">Available Sizes</h3>
             <div class="flex gap-2">
               <button
                 v-for="size in availableSizes" :key="size"
@@ -111,17 +103,21 @@ export default {
             </div>
           </div>
 
+          <!-- 1. Fitur quantity dihapus dari sini -->
           <div class="flex items-center gap-4">
-            <div class="flex items-center border rounded-lg bg-gray-100">
-              <button @click="decrementQuantity" class="px-4 py-2 text-lg font-bold">-</button>
-              <span class="px-4 py-2">{{ quantity }}</span>
-              <button @click="incrementQuantity" class="px-4 py-2 text-lg font-bold">+</button>
-            </div>
-            <button class="flex-1 bg-black text-white font-bold py-3 px-6 rounded-lg hover:bg-gray-800 transition-colors">
+            <button class="w-full bg-black text-white font-bold py-3 px-6 rounded-lg hover:bg-gray-800 transition-colors">
               Add to Cart
             </button>
           </div>
         </div>
+      </section>
+
+      <!-- 3. Deskripsi dipindahkan ke sini -->
+      <section class="mt-16">
+        <h2 class="text-2xl font-extrabold mb-4">Description</h2>
+        <p class="text-gray-600">
+            {{ product.description }}
+        </p>
       </section>
 
       <!-- You Might Also Like Section -->
