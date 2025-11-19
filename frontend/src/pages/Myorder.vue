@@ -84,7 +84,7 @@ export default {
             </div>
 
             <div class="mt-8">
-              <button class="w-full bg-black text-white py-3 rounded-lg font-semibold hover:bg-gray-800 transition duration-300">Apply Filter</button>
+              <button class="w-full bg-blue-800 text-white py-3 rounded-lg font-semibold hover:bg-blue-600 transition duration-300">Apply Filter</button>
             </div>
           </div>
         </aside>
