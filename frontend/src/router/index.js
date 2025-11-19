@@ -18,6 +18,7 @@ import Profile from '@/pages/profile/Profile.vue'
 import Cart from '@/pages/profile/Cart.vue'
 import Wishlist from '@/pages/profile/Wishlist.vue'
 import Review from '@/pages/profile/Review.vue'
+import Myorder from '@/pages/Myorder.vue'
 // Admin
 import Dashboard from '@/pages/admin/Dashboard.vue'
 import AccountsList from '@/pages/admin/accounts/AccountLists.vue'
@@ -63,6 +64,11 @@ const router = createRouter({
           path: '/detailreview',
           name: 'DetailReview',
           component: DetailReviewPage,
+        },
+        {
+          path: '/myorder',
+          name: 'MyOrder',
+          component: Myorder,
         },
         {
           path: '/user',

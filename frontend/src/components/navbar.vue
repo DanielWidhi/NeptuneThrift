@@ -8,6 +8,7 @@ import LoginModal from "@/components/auth/LoginModal.vue";
 import defaultAvatar from "@/asset/images/user_profile/default-avatar.png";
 import logofootwear from "@/asset/images/Footwear.png";
 import cartIcon from "@/asset/images/icons/cart.png";
+import EnvelopeIcon from "@/asset/images/icons/envelope.png";
 
 // --- SIMULASI STATUS LOGIN ---
 const isAuthenticated = ref(true); // false = belum login
@@ -188,6 +189,19 @@ onUnmounted(() => {
             :class="{
               'w-8': route.path === '/user/cart',
               'w-0 group-hover:w-8': route.path !== '/user/cart',
+            }"
+          ></span>
+        </div>
+
+        <div class="group flex flex-col items-center">
+          <RouterLink to="/myorder" aria-label="View My Orders">
+            <img :src="EnvelopeIcon" alt="Notification" class=" mt-1 h-8 w-8 transition-transform duration-300 group-hover:scale-110" />
+          </RouterLink>
+          <span
+            class="mt-1 h-0.5 bg-blue-500 rounded-full transition-all duration-400 ease-out"
+            :class="{
+              'w-8': route.path === '/myorder',
+              'w-0 group-hover:w-8': route.path !== '/myorder',
             }"
           ></span>
         </div>
