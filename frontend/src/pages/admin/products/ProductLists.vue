@@ -5,6 +5,7 @@ import TrashCan from '@/components/icons/TrashCan.vue'
 import Search from '@/components/icons/Search.vue'
 import Edit from '@/components/icons/Edit.vue'
 import Plus from '@/components/icons/Plus.vue'
+import { RouterLink } from 'vue-router'
 const products = [
   { id: 1, name: 'Nike Air Max', price: 'Rp. 900.000', stock: '43', description: 'Produk Masih mulus dipakai 1thn' },
   { id: 2, name: 'Adidas Ultraboost', price: 'Rp. 1.200.000', stock: '30', description: 'Baru sekali dipakai' },
@@ -34,11 +35,12 @@ const products = [
               placeholder="Search..."
             />
           </div>
-          <button
+          <router-link
+            :to="{ name: 'Createproduct' }"
             class="whitespace-nowrap flex px-4.5 order-1 sm:order-2 py-2.5 cursor-pointer w-fit hover:bg-blue-600 text-sm gap-2 items-center justify-center font-medium bg-blue-700 rounded-full text-white"
           >
             <Plus class="size-5" /> New Product
-          </button>
+          </router-link>
         </div>
 
         <!-- Table -->
@@ -67,18 +69,20 @@ const products = [
                   <td class="p-4">{{ product.stock }}</td>
                   <td class="p-4">{{ product.description }}</td>
                   <td class="p-4 flex gap-3">
-                    <button
+                    <router-link
+                      :to="{ name: 'Editproduct' }"
                       title="Edit"
                       class="flex items-center justify-center p-2 rounded-md bg-[#FACA15] hover:bg-yellow-500"
                     >
                       <Edit class="size-5 text-neu-900" />
-                    </button>
-                    <button
+                    </router-link>
+                    <router-link
+                      :to="{ name: 'Detailproduct' }"
                       title="Detail"
                       class="flex items-center justify-center p-2 rounded-md bg-[#295F98] hover:bg-blue-800"
                     >
                       <Show class="size-5 text-white" />
-                    </button>
+                    </router-link>
                     <button
                       title="Delete"
                       class="flex items-center justify-center p-2 rounded-md bg-[#E02424] hover:bg-red-700"

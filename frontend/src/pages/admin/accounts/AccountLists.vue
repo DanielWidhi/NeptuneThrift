@@ -5,6 +5,7 @@ import TrashCan from '@/components/icons/TrashCan.vue'
 import Search from '@/components/icons/Search.vue'
 import Edit from '@/components/icons/Edit.vue'
 import Plus from '@/components/icons/Plus.vue'
+
 const users = [
   { id: 1, username: 'john_doe', email: 'john@example.com', phone: '08123456789', role: 'admin' },
   { id: 2, username: 'jane_smith', email: 'jane@example.com', phone: '0822334455', role: 'user' },
@@ -34,11 +35,15 @@ const users = [
               placeholder="Search..."
             />
           </div>
-          <button
+
+          <!-- Tombol Create (Ke halaman CreateAdmin) -->
+          <router-link
+            :to="{ name: 'Createadmin' }"
             class="whitespace-nowrap flex px-4.5 order-1 sm:order-2 py-2.5 cursor-pointer w-fit hover:bg-blue-600 text-sm gap-2 items-center justify-center font-medium bg-blue-700 rounded-full text-white"
           >
             <Plus class="size-5" /> New User
-          </button>
+          </router-link>
+
         </div>
 
         <!-- Table -->
@@ -69,18 +74,22 @@ const users = [
                     {{ user.role ? (user.role.charAt(0).toUpperCase() + user.role.slice(1)) : '-' }}
                   </td>
                   <td class="p-4 flex gap-3">
-                    <button
+
+                    <router-link
+                      :to="{ name: 'Editadmin' }"
                       title="Edit"
                       class="flex items-center justify-center p-2 rounded-md bg-[#FACA15] hover:bg-yellow-500"
                     >
                       <Edit class="size-5 text-neu-900" />
-                    </button>
-                    <button
+                    </router-link>
+
+                    <router-link
+                    :to="{ name: 'Detailaccount' }"
                       title="Detail"
                       class="flex items-center justify-center p-2 rounded-md bg-[#295F98] hover:bg-blue-800"
                     >
                       <Show class="size-5 text-white" />
-                    </button>
+                    </router-link>
                     <button
                       title="Delete"
                       class="flex items-center justify-center p-2 rounded-md bg-[#E02424] hover:bg-red-700"

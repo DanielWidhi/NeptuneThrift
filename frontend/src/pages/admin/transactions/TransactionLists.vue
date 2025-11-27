@@ -1,9 +1,22 @@
 <script setup>
+import { ref } from 'vue' // 1. Import ref
 import ArrowRight from '@/components/icons/ArrowRight.vue'
 import Show from '@/components/icons/Show.vue'
 import TrashCan from '@/components/icons/TrashCan.vue'
 import Search from '@/components/icons/Search.vue'
-import Edit from '@/components/icons/Edit.vue'
+
+// 2. Import Modal Component
+// Sesuaikan path ini dengan lokasi file modal yang Anda buat sebelumnya
+import TransactionDetailsModal from '@/pages/admin/transactions/TransactionsDetails.vue'
+
+// 3. State untuk kontrol Modal
+const showDetailModal = ref(false)
+
+// Fungsi untuk membuka modal
+const openDetail = () => {
+  showDetailModal.value = true
+}
+
 // dummy data biar tabel ada isinya
 const products = [
   { id: 1, name: 'Nike Air Max', price: 'Rp. 900.000', stock: '43', description: 'Produk Masih mulus dipakai 1thn' },
@@ -16,13 +29,13 @@ const products = [
   <div class="space-y-6">
     <!-- Header -->
     <div class="flex justify-between gap-3 flex-wrap">
-      <h1 class="text-3xl font-semibold">Product Management</h1>
+      <h1 class="text-3xl font-semibold">Transaction Management</h1> <!-- Saya sesuaikan judulnya agar relevan -->
     </div>
 
     <!-- Content Card -->
     <div class="flex flex-col rounded-3xl border border-gray-300">
       <div class="flex flex-col p-4">
-        <!-- Search + New Product -->
+        <!-- Search -->
         <div class="flex justify-between sm:items-center flex-col sm:flex-row gap-4">
           <div
             class="border border-gray-300 gap-2 px-2.5 order-2 sm:order-1 py-2 flex items-center w-full sm:w-1/2 rounded-full"
@@ -62,18 +75,15 @@ const products = [
                   <td class="p-4">{{ product.stock }}</td>
                   <td class="p-4">{{ product.description }}</td>
                   <td class="p-4 flex gap-3">
+                    <!-- 4. Tambahkan event @click untuk membuka modal -->
                     <button
-                      title="Edit"
-                      class="flex items-center justify-center p-2 rounded-md bg-[#FACA15] hover:bg-yellow-500"
-                    >
-                      <Edit class="size-5 text-neu-900" />
-                    </button>
-                    <button
+                      @click="openDetail"
                       title="Detail"
                       class="flex items-center justify-center p-2 rounded-md bg-[#295F98] hover:bg-blue-800"
                     >
                       <Show class="size-5 text-white" />
                     </button>
+
                     <button
                       title="Delete"
                       class="flex items-center justify-center p-2 rounded-md bg-[#E02424] hover:bg-red-700"
@@ -108,6 +118,13 @@ const products = [
         </div>
       </div>
     </div>
+
+    <!-- 5. Component Modal dipasang di sini -->
+    <TransactionDetailsModal
+      :show="showDetailModal"
+      @close="showDetailModal = false"
+    />
+
   </div>
 </template>
 

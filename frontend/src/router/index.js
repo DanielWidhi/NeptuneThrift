@@ -26,6 +26,16 @@ import CommentLists from "@/pages/admin/comments/CommentLists.vue";
 import ProductLists from "@/pages/admin/products/ProductLists.vue";
 import TransactionLists from "@/pages/admin/transactions/TransactionLists.vue";
 import StatusLists from "@/pages/admin/status/StatusLists.vue";
+// Admin - account management
+import CreateAdmin from "@/pages/admin/accounts/CreateAdmin.vue";
+import EditAdmin from "@/pages/admin/accounts/AccountEdit.vue";
+import DetailAccount from "@/pages/admin/accounts/AccountDetails.vue";
+// Admin - product management
+import CreateProduct from "@/pages/admin/products/AddProducts.vue";
+import EditProduct from "@/pages/admin/products/EditProducts.vue";
+import DetailProduct from "@/pages/admin/products/ProductDetails.vue";
+// Admin - category management
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -84,12 +94,46 @@ const router = createRouter({
         {
           path: "accounts",
           component: Accounts,
-          children: [{ path: "", name: "Accounts", component: AccountsList }],
+          children: [
+            { path: "", name: "Accounts", component: AccountsList },
+            {
+              path: "create", // URL akan menjadi /admin/accounts/create
+              name: "Createadmin",
+              component: CreateAdmin,
+            },
+            {
+              path: "edit",
+              name: "Editadmin",
+              component: EditAdmin,
+            },
+            {
+              path: "detail",
+              name: "Detailaccount",
+              component: DetailAccount,
+            },
+          ],
         },
         {
           path: "products",
           component: Products,
-          children: [{ path: "", name: "Products", component: ProductLists }],
+          children: [
+            { path: "", name: "Products", component: ProductLists },
+            {
+              path: "create",
+              name: "Createproduct",
+              component: CreateProduct,
+            },
+            {
+              path: "edit",
+              name: "Editproduct",
+              component: EditProduct,
+            },
+            {
+              path: "detail",
+              name: "Detailproduct",
+              component: DetailProduct,
+            },
+          ],
         },
         {
           path: "categories",
