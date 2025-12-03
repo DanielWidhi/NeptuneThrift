@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted, onUnmounted, nextTick } from "vue";
 import { RouterLink, useRoute, useRouter } from "vue-router"; // 1. Import useRouter
-
+import axios from 'axios';
 // Import LoginModal
 import LoginModal from "@/components/auth/LoginModal.vue";
 
@@ -11,8 +11,9 @@ import cartIcon from "@/asset/images/icons/cart.png";
 import EnvelopeIcon from "@/asset/images/icons/envelope.png";
 
 // --- SIMULASI STATUS LOGIN ---
-const isAuthenticated = ref(true); // false = belum login
-
+axios.defaults.withCredentials = true;
+const isAuthenticated = ref(false); // false = belum login
+const API_URL = "http://localhost:3000/api/auth";
 // State untuk modal login
 const showLoginModal = ref(false);
 
@@ -23,7 +24,6 @@ const navbarRef = ref(null);
 const navHeight = ref(0);
 const route = useRoute();
 const router = useRouter(); // 2. Inisialisasi router
-
 // 3. State untuk search bar
 const searchTerm = ref("");
 
@@ -68,6 +68,30 @@ onUnmounted(() => {
   window.removeEventListener("scroll", handleScroll);
   window.removeEventListener("click", closeOnClickOutside);
 });
+
+const handleLogout = async () => {
+    try {
+        await axios.post(`${API_URL}/logout`);
+        // Setelah logout berhasil
+        isAuthenticated.value = false; // Set status login false
+        isUserOpen.value = false; // Tutup dropdown
+        alert("Anda berhasil logout.");
+    } catch (error) {
+        console.error("Logout failed:", error);
+        alert("Gagal logout. Coba lagi.");
+    }
+};
+
+const checkAuthStatus = async () => {
+    try {
+        const response = await axios.get(`${API_URL}/status`);
+        isAuthenticated.value = response.data.isAuthenticated;
+    } catch (error) {
+        console.error("Error checking auth status:", error);
+        isAuthenticated.value = false;
+    }
+}
+
 </script>
 
 <template>
@@ -215,7 +239,7 @@ onUnmounted(() => {
             <div v-if="isUserOpen" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-xl z-20 py-1">
               <RouterLink to="/user/profile" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50"> My Profile </RouterLink>
               <RouterLink to="/admin/dashboard" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50"> My Dashboard </RouterLink>
-              <a href="#" @click.prevent="isAuthenticated = false" class="w-full text-left block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50"> Sign Out </a>
+              <a href="#" @click.prevent="handleLogout()" class="w-full text-left block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50"> Sign Out </a>
             </div>
           </div>
           <div v-else>
@@ -261,7 +285,7 @@ onUnmounted(() => {
         <hr class="my-4" />
         <div v-if="isAuthenticated" class="space-y-4">
           <RouterLink to="/user/profile" @click="isSidebarOpen = false" class="font-medium text-blue-700 hover:text-blue-500 text-lg">My Profile</RouterLink>
-          <a href="#" @click.prevent="isAuthenticated = false; isSidebarOpen = false;" class="font-medium text-blue-700 hover:text-blue-500 text-lg">Sign Out</a>
+          <a href="#" @click.prevent="handleLogout(); isSidebarOpen = false;" class="font-medium text-blue-700 hover:text-blue-500 text-lg">Sign Out</a>
         </div>
         <div v-else>
           <button @click="showLoginModal = true; isSidebarOpen = false" class="w-full flex items-center justify-center gap-2 font-medium text-white bg-blue-700 hover:bg-blue-600 px-4 py-2 rounded-full transition-colors">
