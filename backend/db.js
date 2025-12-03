@@ -1,15 +1,22 @@
-const mysql = require("mysql2");
+// db.js
+const mysql = require('mysql2');
+require('dotenv').config();
 
 const db = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASS,
-  database: process.env.DB_NAME
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
 });
 
 db.connect((err) => {
-  if (err) throw err;
-  console.log("MySQL Connected.");
+    if (err) {
+        console.error('Error connecting to MySQL:', err.stack);
+        // Hentikan proses jika koneksi database gagal total
+        process.exit(1); 
+    }
+    console.log('Connected to MySQL as ID:', db.threadId);
 });
 
-module.exports = db;
+// PENTING: Gunakan pool atau .promise() untuk penggunaan async/await yang lebih bersih
+module.exports = db.promise();

@@ -141,8 +141,9 @@
 </template>
 
 <script setup>
-import { ref, defineEmits, defineProps } from "vue";
+import { ref } from "vue";
 import LogoFootWear from "@/asset/images/Footwear.png";
+import axios from 'axios';
 
 const { show } = defineProps({
   show: {
@@ -157,28 +158,55 @@ const email = ref("");
 const password = ref("");
 const confirmPassword = ref("");
 const isSignIn = ref(true); // ✅ state untuk toggle
+const API_URL = "http://localhost:3000/api/auth";
+
+axios.defaults.withCredentials = true;
 
 const closeModal = () => emit("close");
 
-const handleLogin = () => {
-  console.log("Login dengan:", { email: email.value, password: password.value });
-  emit("login-success", { email: email.value, password: password.value });
-  resetForm();
-  closeModal();
+const handleLogin = async () => {
+  try {
+    const response = await axios.post(`${API_URL}/login`, {
+      email: email.value,
+      password: password.value,
+    });
+
+    console.log("Login success:", response.data);
+    emit("login-success", response.data);
+    resetForm();
+    closeModal();
+    // Berikan feedback ke user (misalnya menggunakan Toast/Notifikasi)
+  } catch (error) {
+    console.error("Login failed:", error.response ? error.response.data.error : error.message);
+    // Tampilkan pesan error ke user (misalnya error.response.data.error)
+    alert(error.response ? error.response.data.error : "Login gagal."); 
+  }
 };
 
-const handleSignUp = () => {
-  console.log("Sign up dengan:", {
-    email: email.value,
-    password: password.value,
-    confirmPassword: confirmPassword.value,
-  });
-  emit("signup-success", {
-    email: email.value,
-    password: password.value,
-  });
-  resetForm();
-  closeModal();
+const handleSignUp = async () => {
+  if (password.value !== confirmPassword.value) {
+    alert("Password dan Konfirmasi Password tidak sama!");
+    return;
+  }
+  
+  try {
+    const response = await axios.post(`${API_URL}/signup`, {
+      email: email.value,
+      password: password.value,
+      confirmPassword: confirmPassword.value,
+    });
+
+    console.log("Sign up success:", response.data);
+    emit("signup-success", response.data);
+    resetForm();
+    // Setelah daftar, biasanya kita switch ke mode login
+    isSignIn.value = true;
+    alert(response.data.message); // Tampilkan pesan berhasil
+  } catch (error) {
+    console.error("Sign up failed:", error.response ? error.response.data.error : error.message);
+    // Tampilkan pesan error ke user
+    alert(error.response ? error.response.data.error : "Pendaftaran gagal.");
+  }
 };
 
 const handleGoogleLogin = () => emit("google-login");
