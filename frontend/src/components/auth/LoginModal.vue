@@ -145,6 +145,8 @@ import { ref } from "vue";
 import LogoFootWear from "@/asset/images/Footwear.png";
 import axios from 'axios';
 
+
+
 const { show } = defineProps({
   show: {
     type: Boolean,
@@ -209,7 +211,10 @@ const handleSignUp = async () => {
   }
 };
 
-const handleGoogleLogin = () => emit("google-login");
+const handleGoogleLogin = () => {
+  // Arahkan browser user langsung ke endpoint backend untuk Google Auth
+  window.location.href = `${API_URL}/google`;
+};
 
 const resetForm = () => {
   email.value = "";

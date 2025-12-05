@@ -26,7 +26,7 @@ const route = useRoute();
 const router = useRouter(); // 2. Inisialisasi router
 // 3. State untuk search bar
 const searchTerm = ref("");
-
+const currentUserAvatar = ref(defaultAvatar);
 // 4. Fungsi untuk menangani pencarian
 const handleSearch = () => {
   if (!searchTerm.value.trim()) return; // Jangan cari jika kosong
@@ -54,7 +54,9 @@ const closeOnClickOutside = (event) => {
   }
 };
 
-onMounted(() => {
+onMounted(async () => { // Tambahkan async di sini
+  // 1. Panggil fungsi cek login SEGERA saat navbar dimuat
+  await checkAuthStatus();
   nextTick(() => {
     if (navbarRef.value) {
       navHeight.value = navbarRef.value.offsetHeight;
@@ -86,12 +88,19 @@ const checkAuthStatus = async () => {
     try {
         const response = await axios.get(`${API_URL}/status`);
         isAuthenticated.value = response.data.isAuthenticated;
+
+        // LOGIKA BARU: Cek apakah ada avatar dari backend
+        if (response.data.isAuthenticated && response.data.avatar) {
+            currentUserAvatar.value = response.data.avatar;
+        } else {
+            // Jika tidak ada avatar (atau user login biasa tanpa foto), pakai default
+            currentUserAvatar.value = defaultAvatar;
+        }
     } catch (error) {
         console.error("Error checking auth status:", error);
         isAuthenticated.value = false;
     }
 }
-
 </script>
 
 <template>
@@ -234,7 +243,7 @@ const checkAuthStatus = async () => {
         <div>
           <div v-if="isAuthenticated" class="relative user-dropdown">
             <button @click="toggleUserDropdown" class="focus:outline-none block">
-              <img :src="defaultAvatar" alt="User" class="h-10 w-10 rounded-full object-cover border-2 border-transparent transition-all hover:border-blue-500 hover:scale-105" />
+              <img :src="currentUserAvatar" alt="User" class="h-10 w-10 rounded-full object-cover border-2 border-transparent transition-all hover:border-blue-500 hover:scale-105" />
             </button>
             <div v-if="isUserOpen" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-xl z-20 py-1">
               <RouterLink to="/user/profile" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50"> My Profile </RouterLink>

@@ -5,6 +5,8 @@ const session = require('express-session');
 const bcrypt = require('bcryptjs'); 
 const db = require('./db'); // Import koneksi database yang sudah di-promise
 const cors = require('cors');
+const passport = require('passport'); // TAMBAHAN
+const GoogleStrategy = require('passport-google-oauth20').Strategy; // TAMBAHAN
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -30,16 +32,129 @@ app.use(session({
     } 
 }));
 
-// ======================= STATUS CHECK (OPSIONAL TAPI BERMANFAAT) =======================
+// Initialize Passport (TAMBAHAN)
+app.use(passport.initialize());
+app.use(passport.session());
+
+// ======================= KONFIGURASI PASSPORT GOOGLE =======================
+// ... import dan setup lainnya
+
+passport.use(new GoogleStrategy({
+    clientID: process.env.GOOGLE_CLIENT_ID,
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    callbackURL: "/api/auth/google/callback"
+}, async (accessToken, refreshToken, profile, done) => {
+    try {
+        console.log("Google Profile:", profile.displayName); // Debug nama
+        
+        const email = profile.emails[0].value;
+        // Ambil URL foto. Google mengirim array, kita ambil index 0.
+        const photoUrl = (profile.photos && profile.photos.length > 0) ? profile.photos[0].value : null;
+
+        console.log("Photo URL dari Google:", photoUrl); // Debug URL foto
+
+        // 1. Cek User di DB
+        const [rows] = await db.query("SELECT * FROM users WHERE email = ?", [email]);
+
+        if (rows.length > 0) {
+            // ============================================================
+            // PERBAIKAN UTAMA DI SINI:
+            // Jika user sudah ada, kita UPDATE kolom avatar-nya
+            // ============================================================
+            const existingUser = rows[0];
+            
+            await db.query("UPDATE users SET avatar = ? WHERE id = ?", [photoUrl, existingUser.id]);
+            
+            // Update objek user yang akan dikirim ke serializeUser
+            existingUser.avatar = photoUrl; 
+            
+            return done(null, existingUser);
+
+        } else {
+            // 2. User Baru (Belum ada di DB)
+            const [result] = await db.query(
+                "INSERT INTO users (email, password, is_google, avatar) VALUES (?, ?, ?, ?)", 
+                [email, null, 1, photoUrl]
+            );
+            
+            const newUser = { id: result.insertId, email: email, avatar: photoUrl };
+            return done(null, newUser);
+        }
+    } catch (error) {
+        console.error("Error di Google Strategy:", error);
+        return done(error, null);
+    }
+}));
+
+// ... sisa kode lainnya
+// Serialize & Deserialize User (Diperlukan Passport)
+passport.serializeUser((user, done) => {
+    done(null, user.id);
+});
+
+passport.deserializeUser(async (id, done) => {
+    try {
+        const [rows] = await db.query("SELECT * FROM users WHERE id = ?", [id]);
+        
+        // Cek jika user tidak ditemukan
+        if (!rows || rows.length === 0) {
+            // Jika user tidak ada di DB (mungkin terhapus), kembalikan null/false
+            // Ini akan otomatis membuat user dianggap "logout"
+            return done(null, false);
+        }
+
+        // Jika user ada, kembalikan data user
+        done(null, rows[0]);
+    } catch (err) {
+        console.error("Error saat deserialize user:", err);
+        done(err, null);
+    }
+});
+
+
+// ======================= ROUTES GOOGLE AUTH =======================
+
+// 1. Trigger Login ke Google
+app.get('/api/auth/google', passport.authenticate('google', { 
+    scope: ['profile', 'email'] 
+}));
+
+// 2. Callback setelah user login di Google
+app.get('/api/auth/google/callback', 
+    passport.authenticate('google', { failureRedirect: '/login-failed' }),
+    (req, res) => {
+        // Login berhasil via Passport, sekarang kita set session manual 
+        // agar kompatibel dengan sistem login email/password Anda yang lama.
+        req.session.userId = req.user.id;
+        
+        // Redirect kembali ke Frontend (Halaman Utama)
+        res.redirect(CLIENT_URL);
+    }
+);
+
+// ======================= EXISTING ROUTES =======================
+
 app.get("/api/auth/status", async (req, res) => {
     if (req.session.userId) {
-        // Ambil data user dari DB (jika diperlukan) atau kirim ID sesi saja
-        res.json({ isAuthenticated: true, userId: req.session.userId });
+        try {
+            // Ambil avatar user dari database berdasarkan ID session
+            const [rows] = await db.query("SELECT avatar FROM users WHERE id = ?", [req.session.userId]);
+            
+            const userAvatar = rows.length > 0 ? rows[0].avatar : null;
+
+            res.json({ 
+                isAuthenticated: true, 
+                userId: req.session.userId,
+                avatar: userAvatar // Kirim avatar ke frontend
+            });
+        } catch (error) {
+            console.error("Error fetch status:", error);
+            res.json({ isAuthenticated: true, userId: req.session.userId, avatar: null });
+        }
     } else {
         res.json({ isAuthenticated: false });
     }
 });
-
 // ======================= 1. SIGN UP (POST /api/auth/signup) =======================
 
 app.post("/api/auth/signup", async (req, res) => {
